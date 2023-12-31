@@ -1,11 +1,8 @@
 import { useRouter } from "next/router";
 import { PrimaryButton } from "../../primary-button/primaryButton";
-import { useApolloClient } from "@apollo/client";
 
 const SignIn = () => {
   const router = useRouter();
-  // Apollo Clientのインスタンスを取得
-  const apolloClient = useApolloClient();
 
   const executeLogin = async () => {
     const response = await fetch(
@@ -24,10 +21,10 @@ const SignIn = () => {
     );
     const data = await response.json();
     console.log(data);
-    // Apollo Clientのキャッシュをリセット
-    apolloClient.resetStore().then(() => {
-      // ページ遷移
-      router.push("/assets");
+    // ページ遷移
+    router.push("/assets").then(() => {
+      // ページのリロード
+      window.location.reload();
     });
   };
   return (
