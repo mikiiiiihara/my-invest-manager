@@ -1,0 +1,68 @@
+$headerBorderColor: #4d4d4d;
+$headerBoxShadow: 0 0 8px 0 rgba(255, 255, 255, 0.04);
+$headerBreakpoint: 820px;
+
+.header {
+  .navbar {
+    border-bottom: 2px solid $headerBorderColor;
+    box-shadow: $headerBoxShadow;
+    padding: 0.8rem;
+  }
+  .myAccount {
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    top: 6px;
+    right: 4px;
+    text-align: left;
+    z-index: 10000;
+    > p,
+    > button {
+      display: inline-block !important;
+      margin-bottom: 0;
+    }
+  }
+  .navSp {
+    display: none;
+  }
+  @media (max-width: $headerBreakpoint) {
+    .myAccount {
+      --bs-bg-opacity: 1;
+      background-color: rgb(52, 58, 64) !important;
+      font-size: 1.2rem;
+      position: unset;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    .navSp {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      background-color: #343a40;
+      z-index: 999;
+      padding: 0.5rem auto;
+      width: 100%;
+      border: 2px solid $headerBorderColor;
+      box-shadow: $headerBoxShadow;
+    }
+    .navSpContent {
+      width: 98%;
+      margin: 0 auto;
+    }
+    .navSpItem {
+      width: 23%;
+      font-size: 0.8rem;
+      display: inline-block;
+      padding: 0.2rem;
+      margin: 0.2rem;
+      border: 2px solid $headerBorderColor;
+      box-shadow: $headerBoxShadow;
+      border-radius: 6px;
+      color: white;
+      text-align: center;
+      > div {
+        margin: 0 auto;
+      }
+    }
+  }
+}

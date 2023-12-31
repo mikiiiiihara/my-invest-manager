@@ -1,6 +1,19 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { useMemo } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/globals.css";
+import { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client";
+import { TickerProvider } from "@/contexts/tickersContext";
+import { createApolloClient } from "@/lib/apolloClient/apollo-client";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  const apolloClient = useMemo(() => createApolloClient(), []);
+  return (
+    <ApolloProvider client={apolloClient}>
+      <TickerProvider>
+        <Component {...pageProps} />
+      </TickerProvider>
+    </ApolloProvider>
+  );
 }
+export default App;

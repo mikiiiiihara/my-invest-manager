@@ -1,0 +1,15 @@
+.fxButtonFix {
+  position: fixed;
+  z-index: 99999999;
+  bottom: 8rem;
+  right: 2.2rem;
+  padding: 0.8rem;
+  font-size: 1.4rem;
+  border-radius: 0.8rem;
+  border: none;
+}
+.fxButton {
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 0.2rem;
+}
