@@ -4,7 +4,7 @@ import { Center } from "../../common/center/center";
 import { PrimaryButton } from "../../primary-button/primaryButton";
 import { HomeMain } from "../../../contents/home/homeMain";
 import { Empty } from "../../graph/empty";
-import { Asset } from "../../../pages/test/calculate-all-assets";
+import { Asset } from "../../../pages/assets/calculate-all-assets";
 
 type Props = {
   assets: Asset[];

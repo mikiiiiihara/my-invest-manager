@@ -1,4 +1,4 @@
-import { Asset } from "../../../pages/test/calculate-all-assets";
+import { Asset } from "../../../pages/assets/calculate-all-assets";
 import { UsStockDetail, UsStockSummary } from "./types";
 
 export const summarizeAllAssets = (

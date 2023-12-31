@@ -10,7 +10,7 @@ import {
 import { AssetTemplate } from "../../components/templates/assets/assets";
 import { AllAssets, CaluculateAllAssets } from "./calculate-all-assets";
 
-const Test = () => {
+const Assets = () => {
   const { data: usStocksQuery, loading: usStocksQueryLoading } =
     useUsStocksQuery();
 
@@ -47,7 +47,7 @@ const Test = () => {
   const assets = CaluculateAllAssets(allAssets);
   return (
     <>
-      <NextHead title="My US Stock Portfolio | Test" />
+      <NextHead title="My US Stock Portfolio | Assets" />
       <AssetTemplate
         assets={assets ?? []}
         currentUsdJpy={currentUsdJpyQuery?.currentUsdJpy ?? 0}
@@ -55,4 +55,4 @@ const Test = () => {
     </>
   );
 };
-export default Test;
+export default Assets;
