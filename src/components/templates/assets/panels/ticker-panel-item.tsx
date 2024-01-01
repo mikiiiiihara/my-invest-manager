@@ -7,6 +7,7 @@ export const DISPLAY_TYPE = {
   balance: "balance", // // 金額単位
   balanceRate: "balanceRate", // 率単位
 } as const;
+
 export type DisplayType = (typeof DISPLAY_TYPE)[keyof typeof DISPLAY_TYPE];
 
 type Props = {
