@@ -2,7 +2,7 @@ import React, { FC, useCallback, useEffect, useState } from "react";
 import { summarizeAllAssets } from "./summarize-all-asset";
 import { Center } from "../../common/center/center";
 import { PrimaryButton } from "../../button/primary-button/primaryButton";
-import { HomeMain } from "../../../contents/home/homeMain";
+import { HomeMain } from "./homeMain";
 import { Empty } from "../../graph/empty";
 import { Asset } from "../../../pages/assets/calculate-all-assets";
 

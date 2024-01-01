@@ -1,10 +1,7 @@
 import React, { FC } from "react";
-import { TickerContent } from "../ticker/tickerContent";
+import { TickerContent } from "./detail/tickerContent";
 import { SummaryContent } from "./summary/summaryContent";
-import {
-  UsStockDetail,
-  UsStockSummary,
-} from "../../components/templates/assets/types";
+import { UsStockDetail, UsStockSummary } from "./types";
 
 type Props = {
   displayMode: string;

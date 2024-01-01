@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
-import { Pie } from "../../../components/graph/pie";
-import { themeDefault } from "../../../constants/theme-color";
-import { PrimaryButton } from "../../../components/button/primary-button/primaryButton";
+import { Pie } from "../../../graph/pie";
+import { themeDefault } from "../../../../constants/theme-color";
+import { PrimaryButton } from "../../../button/primary-button/primaryButton";
 import { calculateSectors } from "./calculateSectors";
 import { calculateTickerPie } from "./calculateTickerPie";
-import { UsStockDetail } from "../../../components/templates/assets/types";
+import { UsStockDetail } from "../types";
 import { PieData } from "@/types/pie-data.type";
 
 const DISPLAY_MODE = {

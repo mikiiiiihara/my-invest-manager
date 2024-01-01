@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { SearchTicker } from "./search-ticker/search-ticker";
-import { useTickerContext } from "../../contexts/tickersContext";
+import { useTickerContext } from "../../../../contexts/tickersContext";
 import { Summary } from "./summary/summary";
-import { PrimaryButton } from "../../components/button/primary-button/primaryButton";
-import { UsStockSummary } from "../../components/templates/assets/types";
+import { PrimaryButton } from "../../../button/primary-button/primaryButton";
+import { UsStockSummary } from "../types";
 
 const DISPLAY_MODE = {
   summary: "summary",

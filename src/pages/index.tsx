@@ -1,4 +1,4 @@
-import { TopContent } from "../contents/top/topContent";
+import { TopContent } from "../components/templates/signin/topContent";
 import { NextHead } from "../components/common/next-head/nextHead";
 
 const Top = () => {

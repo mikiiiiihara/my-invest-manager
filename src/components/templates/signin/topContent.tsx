@@ -1,7 +1,7 @@
 import React from "react";
-import { Center } from "../../components/common/center/center";
-import SignIn from "../../components/common/sign-in/signIn";
-import { Header } from "../../components/common/header/header";
+import { Center } from "../../common/center/center";
+import SignIn from "../../common/sign-in/signIn";
+import { Header } from "../../common/header/header";
 
 export const TopContentComponent = () => {
   return (
