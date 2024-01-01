@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
 import { Pie } from "../../../components/graph/pie";
-import { themeDefault } from "../../../constants/themeColor";
+import { themeDefault } from "../../../constants/theme-color";
 import { PrimaryButton } from "../../../components/button/primary-button/primaryButton";
 import { calculateSectors } from "./calculateSectors";
 import { calculateTickerPie } from "./calculateTickerPie";
