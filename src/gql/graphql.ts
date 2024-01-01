@@ -204,11 +204,6 @@ export type User = {
   password: Scalars['String']['output'];
 };
 
-export type MarketPricesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MarketPricesQuery = { __typename?: 'Query', marketPrices: Array<{ __typename?: 'MarketPrice', ticker: string, currentPrice: number, currentRate: number, priceGets: number }> };
-
 export type UsStocksQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -234,51 +229,12 @@ export type JapanFundsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type JapanFundsQuery = { __typename?: 'Query', japanFunds?: Array<{ __typename?: 'JapanFund', id: string, code: string, name: string, getPrice: number, getPriceTotal: number, currentPrice: number }> | null };
 
+export type MarketPricesQueryVariables = Exact<{ [key: string]: never; }>;
 
-export const MarketPricesDocument = gql`
-    query marketPrices {
-  marketPrices(
-    tickerList: ["SPY", "XLE", "XLK", "SMH", "IBB", "XLV", "XLP", "XLU", "XLB", "XLY", "XLF", "XLI", "XLRE", "XME", "XRT", "ITA", "ICLN", "AGG", "GLD", "DBA"]
-  ) {
-    ticker
-    currentPrice
-    currentRate
-    priceGets
-  }
-}
-    `;
 
-/**
- * __useMarketPricesQuery__
- *
- * To run a query within a React component, call `useMarketPricesQuery` and pass it any options that fit your needs.
- * When your component renders, `useMarketPricesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMarketPricesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useMarketPricesQuery(baseOptions?: Apollo.QueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
-      }
-export function useMarketPricesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
-        }
-export function useMarketPricesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
-        }
-export type MarketPricesQueryHookResult = ReturnType<typeof useMarketPricesQuery>;
-export type MarketPricesLazyQueryHookResult = ReturnType<typeof useMarketPricesLazyQuery>;
-export type MarketPricesSuspenseQueryHookResult = ReturnType<typeof useMarketPricesSuspenseQuery>;
-export type MarketPricesQueryResult = Apollo.QueryResult<MarketPricesQuery, MarketPricesQueryVariables>;
+export type MarketPricesQuery = { __typename?: 'Query', marketPrices: Array<{ __typename?: 'MarketPrice', ticker: string, currentPrice: number, currentRate: number, priceGets: number }> };
+
+
 export const UsStocksDocument = gql`
     query usStocks {
   usStocks {
@@ -495,3 +451,47 @@ export type JapanFundsQueryHookResult = ReturnType<typeof useJapanFundsQuery>;
 export type JapanFundsLazyQueryHookResult = ReturnType<typeof useJapanFundsLazyQuery>;
 export type JapanFundsSuspenseQueryHookResult = ReturnType<typeof useJapanFundsSuspenseQuery>;
 export type JapanFundsQueryResult = Apollo.QueryResult<JapanFundsQuery, JapanFundsQueryVariables>;
+export const MarketPricesDocument = gql`
+    query marketPrices {
+  marketPrices(
+    tickerList: ["SPY", "XLE", "XLK", "SMH", "IBB", "XLV", "XLP", "XLU", "XLB", "XLY", "XLF", "XLI", "XLRE", "XME", "XRT", "ITA", "ICLN", "AGG", "GLD", "DBA"]
+  ) {
+    ticker
+    currentPrice
+    currentRate
+    priceGets
+  }
+}
+    `;
+
+/**
+ * __useMarketPricesQuery__
+ *
+ * To run a query within a React component, call `useMarketPricesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketPricesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketPricesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMarketPricesQuery(baseOptions?: Apollo.QueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
+      }
+export function useMarketPricesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
+        }
+export function useMarketPricesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketPricesQuery, MarketPricesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketPricesQuery, MarketPricesQueryVariables>(MarketPricesDocument, options);
+        }
+export type MarketPricesQueryHookResult = ReturnType<typeof useMarketPricesQuery>;
+export type MarketPricesLazyQueryHookResult = ReturnType<typeof useMarketPricesLazyQuery>;
+export type MarketPricesSuspenseQueryHookResult = ReturnType<typeof useMarketPricesSuspenseQuery>;
+export type MarketPricesQueryResult = Apollo.QueryResult<MarketPricesQuery, MarketPricesQueryVariables>;
