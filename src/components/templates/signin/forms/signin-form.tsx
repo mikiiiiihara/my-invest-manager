@@ -29,7 +29,7 @@ const SignInFormComponent = () => {
     );
     const data = await response.json();
     console.log(data);
-    if (data.error.length > 0) {
+    if (data.error) {
       alert(data.error);
     } else {
       // エラーが発生していなければページ遷移
