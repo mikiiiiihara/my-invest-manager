@@ -1,5 +1,6 @@
 import { UsStockDetail } from "@/components/templates/assets/types";
 import { PieData } from "@/types/pie-data.type";
+import { kMaxLength } from "buffer";
 
 export const calculateTickerPie = (
   tickerDetail: UsStockDetail[]
@@ -9,7 +10,7 @@ export const calculateTickerPie = (
   for (let data of tickerDetail) {
     const yData = data.sumOfPrice;
     const value = {
-      name: data.code,
+      name: truncateString(data.code),
       y: Math.round(yData * 10) / 10,
     };
     graphData.push(value);
@@ -19,4 +20,12 @@ export const calculateTickerPie = (
     if (a.y < b.y) return 1;
     return 0;
   });
+};
+
+const truncateString = (str: string) => {
+  const maxLength = 4;
+  if (str.length <= maxLength) {
+    return str;
+  }
+  return str.slice(0, maxLength) + "...";
 };
