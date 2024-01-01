@@ -2,10 +2,10 @@ import React, { FC, useCallback, useMemo, useState } from "react";
 import { Pie } from "../../../components/graph/pie";
 import { themeDefault } from "../../../constants/themeColor";
 import { PrimaryButton } from "../../../components/primary-button/primaryButton";
-import { PieData } from "../../../types/pieData.type";
-import { calculateSectors } from "../../../functions/sector/calculateSectors";
-import { calculateTickerPie } from "../../../functions/tickers/calculateTickerPie";
+import { calculateSectors } from "./calculateSectors";
+import { calculateTickerPie } from "./calculateTickerPie";
 import { UsStockDetail } from "../../../components/templates/assets/types";
+import { PieData } from "@/types/pieData.type";
 
 const DISPLAY_MODE = {
   ticker: "ticker",

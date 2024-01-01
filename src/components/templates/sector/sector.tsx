@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { Center } from "../../common/center/center";
-import { MarketData } from "../../../types/marketData.type";
 import { SectorPanel } from "../../sector/sectorPanel";
 import { Header } from "../../common/header/header";
 import { calculateSectors } from "./calculate-sector";
+import { MarketData } from "@/types/marketData.type";
 
 type Props = {
   sectors: MarketData[];
