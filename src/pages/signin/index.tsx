@@ -1,11 +1,11 @@
 import { NextHead } from "@/components/common/next-head/nextHead";
-import { TopContent } from "@/components/templates/signin/topContent";
+import { SignInTemplate } from "@/components/templates/signin";
 
 const SignIn = () => {
   return (
     <>
       <NextHead title="My US Stock Portfolio | SignIn" />
-      <TopContent />
+      <SignInTemplate />
     </>
   );
 };

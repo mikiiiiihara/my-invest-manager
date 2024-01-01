@@ -23,7 +23,7 @@ const executeRefreshToken = async () => {
       console.error(error);
       // ログイン画面にリダイレクトします
       if (typeof window !== "undefined") {
-        window.location.href = "/";
+        window.location.href = "/signin";
         return;
       }
     });
