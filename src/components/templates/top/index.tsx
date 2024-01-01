@@ -4,7 +4,7 @@ import { themeDefault } from "@/constants/theme-color";
 import { PieData } from "@/types/pie-data.type";
 import React from "react";
 import styles from "./top.module.scss";
-import { PrimaryButton } from "@/components/button/primary-button/primaryButton";
+import { PrimaryButton } from "@/components/button/primary-button/primary-button";
 import { useRouter } from "next/router";
 
 const TopComponent = () => {

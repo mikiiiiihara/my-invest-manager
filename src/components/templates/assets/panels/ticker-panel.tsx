@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { DisplayType, TickerPanelItem } from "./tickerPanelItem";
+import { DisplayType, TickerPanelItem } from "./ticker-panel-item";
 import { UsStockDetail } from "../types";
 
 type Props = {

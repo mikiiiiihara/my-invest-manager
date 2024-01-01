@@ -1,6 +1,6 @@
 import React from "react";
-import { TickerPanel } from "../../panels/tickerPanel";
-import { useTickersSummary } from "../../../../../hooks/useTickersSummary.ts/useTickersSummary";
+import { TickerPanel } from "../../panels/ticker-panel";
+import { useTickersSummary } from "../../../../../hooks/tickers-summary";
 import { UsStockDetail } from "../../types";
 
 type Props = {

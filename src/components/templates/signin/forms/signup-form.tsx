@@ -1,4 +1,5 @@
-import { PrimaryButton } from "@/components/button/primary-button/primaryButton";
+import { PrimaryButton } from "@/components/button/primary-button/primary-button";
+import { FormGroup } from "@/components/forms/form-group";
 import { useRouter } from "next/router";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -40,7 +41,7 @@ const SignUpFormComponent = () => {
   });
   return (
     <form onSubmit={onSubmit}>
-      <div className="form-group mb-3">
+      <FormGroup>
         <label htmlFor="name">ニックネーム</label>
         <input
           type="text"
@@ -48,8 +49,8 @@ const SignUpFormComponent = () => {
           {...register("name", { required: true })}
           placeholder="株式太郎"
         />
-      </div>
-      <div className="form-group mb-3">
+      </FormGroup>
+      <FormGroup>
         <label htmlFor="email">メールアドレス</label>
         <input
           type="text"
@@ -57,8 +58,8 @@ const SignUpFormComponent = () => {
           {...register("email", { required: true })}
           placeholder="test@test.com"
         />
-      </div>
-      <div className="form-group mb-3">
+      </FormGroup>
+      <FormGroup>
         <label htmlFor="password">パスワード</label>
         <input
           type="password"
@@ -66,7 +67,7 @@ const SignUpFormComponent = () => {
           {...register("password", { required: true })}
           placeholder="*****"
         />
-      </div>
+      </FormGroup>
       <PrimaryButton content="会員登録" className="mb-3 w-100" type="submit" />
     </form>
   );

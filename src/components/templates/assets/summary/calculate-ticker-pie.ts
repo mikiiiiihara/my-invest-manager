@@ -1,6 +1,5 @@
 import { UsStockDetail } from "@/components/templates/assets/types";
 import { PieData } from "@/types/pie-data.type";
-import { kMaxLength } from "buffer";
 
 export const calculateTickerPie = (
   tickerDetail: UsStockDetail[]

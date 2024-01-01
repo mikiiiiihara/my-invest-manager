@@ -1,5 +1,5 @@
 import { FC, ReactNode, useContext, createContext } from "react";
-import { useSelectedFx } from "../hooks/selected-fx/useSelectedFx";
+import { useSelectedFx } from "../hooks/selected-fx";
 
 type Props = {
   children: ReactNode;

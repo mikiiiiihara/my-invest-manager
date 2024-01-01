@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./fx-change-button.module.scss";
-import { PrimaryButton } from "../primary-button/primaryButton";
+import { PrimaryButton } from "../primary-button/primary-button";
 import Image from "next/image";
 
 type Props = {

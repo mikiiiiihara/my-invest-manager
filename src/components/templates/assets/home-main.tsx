@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { TickerContent } from "./detail/tickerContent";
-import { SummaryContent } from "./summary/summaryContent";
+import { TickerContent } from "./detail";
+import { SummaryContent } from "./summary";
 import { UsStockDetail, UsStockSummary } from "./types";
 
 type Props = {

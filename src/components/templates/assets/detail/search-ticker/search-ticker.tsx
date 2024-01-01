@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SearchBar } from "../../../../search-bar/search-bar";
-import { TickerPanel } from "../../panels/tickerPanel";
+import { TickerPanel } from "../../panels/ticker-panel";
 import { UsStockDetail } from "../../types";
 
 type SearchTickerProps = {
