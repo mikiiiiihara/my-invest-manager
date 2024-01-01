@@ -26,20 +26,23 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
         className={`${styles.navbar} navbar-expand-lg navbar-dark bg-dark d-none-tb`}
       >
         <div className="container-xl">
-          <Link href={NAVIGATION_LIST.HOME} className="navbar-brand float-left">
+          <Link
+            href={NAVIGATION_LIST.ASSET}
+            className="navbar-brand float-left"
+          >
             My US Stock Portfolio
           </Link>
           <ul className={`navbar-nav mr-auto float-left ${styles.subMenu}`}>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link href={NAVIGATION_LIST.DIVIDEND} className="nav-link">
                 Dividend
               </Link>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <Link href={NAVIGATION_LIST.ASSET} className="nav-link">
                 Stock
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link href={NAVIGATION_LIST.SECTOR} className="nav-link">
                 Sector
@@ -50,7 +53,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
       </Nav>
       <div className={styles.navSp}>
         <div className={styles.navSpContent}>
-          <Link href={NAVIGATION_LIST.HOME}>
+          <Link href={NAVIGATION_LIST.ASSET}>
             <div className={styles.navSpItem}>
               <Image
                 src="/asset.png"
@@ -62,7 +65,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
               <p>Home</p>
             </div>
           </Link>
-          <Link href={NAVIGATION_LIST.DIVIDEND}>
+          {/* <Link href={NAVIGATION_LIST.DIVIDEND}>
             <div className={styles.navSpItem}>
               <Image
                 src="/dividend.png"
@@ -73,8 +76,8 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
               />
               <p>Dividend</p>
             </div>
-          </Link>
-          <Link href={NAVIGATION_LIST.ASSET}>
+          </Link> */}
+          {/* <Link href={NAVIGATION_LIST.ASSET}>
             <div className={styles.navSpItem}>
               <Image
                 src="/home.png"
@@ -85,7 +88,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
               />
               <p>Stock</p>
             </div>
-          </Link>
+          </Link> */}
           <Link href={NAVIGATION_LIST.SECTOR}>
             <div className={styles.navSpItem}>
               <Image

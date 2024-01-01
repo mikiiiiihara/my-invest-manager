@@ -7,7 +7,7 @@ import {
   useJapanFundsQuery,
   useUsStocksQuery,
 } from "../../gql/graphql";
-import { AssetTemplate } from "../../components/templates/assets/assets";
+import { AssetTemplate } from "../../components/templates/assets";
 import { AllAssets, CaluculateAllAssets } from "./calculate-all-assets";
 
 const Assets = () => {

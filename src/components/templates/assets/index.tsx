@@ -5,6 +5,7 @@ import { PrimaryButton } from "../../button/primary-button/primaryButton";
 import { HomeMain } from "./homeMain";
 import { Empty } from "../../graph/empty";
 import { Asset } from "../../../pages/assets/calculate-all-assets";
+import { Header } from "@/components/common/header/header";
 
 type Props = {
   assets: Asset[];
@@ -83,41 +84,40 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     </div>
   );
   return (
-    <div>
-      <Center>
-        <div className="content">
-          <h1>保有株式総額¥:{priceTotal.toLocaleString()}</h1>
-          <p className={balanceRateClass}>
-            損益¥:{balanceTotal.toLocaleString()}（
-            {isNaN(Number(balanceRateTotal)) ? 0 : balanceRateTotal}
-            %）
-          </p>
-          <p>（USDJPY: {currentUsdJpy}）</p>
-          <div className="m-3">
-            <PrimaryButton
-              content="ポートフォリオ"
-              notSelected={displayMode !== DISPLAY_MODE.summary}
-              onClick={changeDisplayToSummary}
-            />
-            <PrimaryButton
-              content="保有銘柄一覧"
-              notSelected={displayMode !== DISPLAY_MODE.detail}
-              onClick={changeDisplayToDetail}
-            />
-          </div>
-          {renderCheckboxes()}
-          {usStockDetails.length > 0 ? (
-            <HomeMain
-              displayMode={displayMode}
-              usStockDetail={usStockDetails}
-              usStockSummary={usStockSummary}
-            />
-          ) : (
-            <Empty />
-          )}
+    <Center>
+      <Header />
+      <div className="content">
+        <h1>保有株式総額¥:{priceTotal.toLocaleString()}</h1>
+        <p className={balanceRateClass}>
+          損益¥:{balanceTotal.toLocaleString()}（
+          {isNaN(Number(balanceRateTotal)) ? 0 : balanceRateTotal}
+          %）
+        </p>
+        <p>（USDJPY: {currentUsdJpy}）</p>
+        <div className="m-3">
+          <PrimaryButton
+            content="ポートフォリオ"
+            notSelected={displayMode !== DISPLAY_MODE.summary}
+            onClick={changeDisplayToSummary}
+          />
+          <PrimaryButton
+            content="保有銘柄一覧"
+            notSelected={displayMode !== DISPLAY_MODE.detail}
+            onClick={changeDisplayToDetail}
+          />
         </div>
-      </Center>
-    </div>
+        {renderCheckboxes()}
+        {usStockDetails.length > 0 ? (
+          <HomeMain
+            displayMode={displayMode}
+            usStockDetail={usStockDetails}
+            usStockSummary={usStockSummary}
+          />
+        ) : (
+          <Empty />
+        )}
+      </div>
+    </Center>
   );
 };
 AssetsComponent.displayName = "AssetTemplate";
