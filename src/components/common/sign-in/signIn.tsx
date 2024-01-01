@@ -28,11 +28,13 @@ const SignIn = () => {
     });
   };
   return (
-    <PrimaryButton
-      content={"ログイン"}
-      className="mb-3"
-      onClick={executeLogin}
-    />
+    <>
+      <PrimaryButton
+        content={"ログイン"}
+        className="mb-3"
+        onClick={executeLogin}
+      />
+    </>
   );
 };
 export default SignIn;

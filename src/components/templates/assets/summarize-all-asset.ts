@@ -38,13 +38,13 @@ export const summarizeAllAssets = (
     if (a.sumOfPrice < b.sumOfPrice) return 1;
     return 0;
   });
-  const tickerData: UsStockSummary = {
+  const assetsSummary: UsStockSummary = {
     usStockDetails: usStockDetails,
     getPriceTotal: Math.round(getPriceSum * 10) / 10,
     priceTotal: Math.round(priceSum * 10) / 10,
     dividendTotal: Math.round(dividendSum * 10) / 10,
   };
-  return tickerData;
+  return assetsSummary;
 };
 
 // 米国株式のサマリーを計算
@@ -57,7 +57,6 @@ const calculateUsStock = (asset: Asset, fx: number): UsStockDetail => {
   const sumOfDividend = quantity * (dividend * 0.71);
   const sumOfGetPrice = Math.round(quantity * getPrice * 10) / 10;
   const sumOfPrice = Math.round(quantity * price * 10) / 10;
-
   return {
     id,
     code,
