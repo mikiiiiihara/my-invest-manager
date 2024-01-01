@@ -1,5 +1,5 @@
 import React from "react";
-import { TickerPanel } from "../../../components/tickers/tickerPanel";
+import { TickerPanel } from "../../../components/templates/assets/panels/tickerPanel";
 import { useTickersSummary } from "../../../hooks/useTickersSummary.ts/useTickersSummary";
 import { UsStockDetail } from "../../../components/templates/assets/types";
 

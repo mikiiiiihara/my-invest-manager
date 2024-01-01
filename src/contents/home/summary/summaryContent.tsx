@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
 import { Pie } from "../../../components/graph/pie";
 import { themeDefault } from "../../../constants/themeColor";
-import { PrimaryButton } from "../../../components/primary-button/primaryButton";
+import { PrimaryButton } from "../../../components/button/primary-button/primaryButton";
 import { calculateSectors } from "./calculateSectors";
 import { calculateTickerPie } from "./calculateTickerPie";
 import { UsStockDetail } from "../../../components/templates/assets/types";

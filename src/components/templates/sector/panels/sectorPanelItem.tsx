@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./sector-panel-item.module.scss";
-import { TickerRealData } from "../../types/tickerRealData.type";
+import { TickerRealData } from "../../../../types/tickerRealData.type";
 
 interface Props {
   data: TickerRealData;

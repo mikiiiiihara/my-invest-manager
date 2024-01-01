@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { DisplayType, TickerPanelItem } from "./tickerPanelItem";
-import { UsStockDetail } from "../templates/assets/types";
+import { UsStockDetail } from "../types";
 
 type Props = {
   tickerDetail: UsStockDetail[];

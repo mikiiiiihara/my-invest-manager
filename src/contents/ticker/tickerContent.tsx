@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { SearchTicker } from "./search-ticker/search-ticker";
 import { useTickerContext } from "../../contexts/tickersContext";
 import { Summary } from "./summary/summary";
-import { PrimaryButton } from "../../components/primary-button/primaryButton";
+import { PrimaryButton } from "../../components/button/primary-button/primaryButton";
 import { UsStockSummary } from "../../components/templates/assets/types";
 
 const DISPLAY_MODE = {

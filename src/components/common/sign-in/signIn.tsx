@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { PrimaryButton } from "../../primary-button/primaryButton";
+import { PrimaryButton } from "../../button/primary-button/primaryButton";
 
 const SignIn = () => {
   const router = useRouter();

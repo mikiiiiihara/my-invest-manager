@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Center } from "../../common/center/center";
-import { SectorPanel } from "../../sector/sectorPanel";
+import { SectorPanel } from "./panels/sectorPanel";
 import { Header } from "../../common/header/header";
 import { calculateSectors } from "./calculate-sector";
 import { MarketData } from "@/types/marketData.type";
