@@ -54,7 +54,6 @@ const calculateUsStock = (asset: Asset, fx: number): UsStockDetail => {
   const price = asset.currentPrice * fx;
   const priceRate = asset.currentRate;
   const dividend = asset.dividend * fx;
-
   const sumOfDividend = quantity * (dividend * 0.71);
   const sumOfGetPrice = Math.round(quantity * getPrice * 10) / 10;
   const sumOfPrice = Math.round(quantity * price * 10) / 10;

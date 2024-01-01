@@ -44,7 +44,8 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
   );
   // 保有株式情報をグラフ用に加工
   const usStockSummary = summarizeAllAssets(displayAssets, currentUsdJpy);
-  const { usStockDetails, priceTotal, getPriceTotal } = usStockSummary;
+  const { usStockDetails, priceTotal, getPriceTotal, dividendTotal } =
+    usStockSummary;
   const balanceTotal = Math.round((priceTotal - getPriceTotal) * 10) / 10;
   const balanceRateTotal = ((balanceTotal / getPriceTotal) * 100).toFixed(2);
   const balanceRateClass =
@@ -94,6 +95,7 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
           %）
         </p>
         <p>（USDJPY: {currentUsdJpy}）</p>
+        <p>一年あたり配当総額：¥{dividendTotal.toLocaleString()}</p>
         <div className="m-3">
           <PrimaryButton
             content="ポートフォリオ"
