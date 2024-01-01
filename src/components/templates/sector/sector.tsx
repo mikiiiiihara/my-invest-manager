@@ -3,7 +3,7 @@ import { Center } from "../../common/center/center";
 import { SectorPanel } from "./panels/sectorPanel";
 import { Header } from "../../common/header/header";
 import { calculateSectors } from "./calculate-sector";
-import { MarketData } from "@/types/marketData.type";
+import { MarketData } from "@/types/market-data.type";
 
 type Props = {
   sectors: MarketData[];

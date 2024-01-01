@@ -2,7 +2,7 @@ import React from "react";
 import { FC } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { PieData } from "../../types/pieData.type";
+import { PieData } from "../../types/pie-data.type";
 
 type Props = {
   pieData: PieData[];

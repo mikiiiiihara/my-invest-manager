@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { SectorPanelItem } from "./sectorPanelItem";
-import { TickerRealData } from "../../../../types/tickerRealData.type";
+import { TickerRealData } from "../../../../types/ticker-real-data.type";
 
 type Props = {
   sectorList: TickerRealData[];

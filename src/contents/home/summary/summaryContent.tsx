@@ -5,7 +5,7 @@ import { PrimaryButton } from "../../../components/button/primary-button/primary
 import { calculateSectors } from "./calculateSectors";
 import { calculateTickerPie } from "./calculateTickerPie";
 import { UsStockDetail } from "../../../components/templates/assets/types";
-import { PieData } from "@/types/pieData.type";
+import { PieData } from "@/types/pie-data.type";
 
 const DISPLAY_MODE = {
   ticker: "ticker",
