@@ -15,11 +15,7 @@ type Props = {
   displayType?: DisplayType;
 };
 
-const TickerPanelItemComponent: FC<Props> = ({
-  data,
-  currency,
-  displayType,
-}) => {
+const TickerPanelItemComponent: FC<Props> = ({ data, displayType }) => {
   // モーダル表示切り替え用
   const [modalState, setModalState] = useState(false);
   const changeModal = () => {
