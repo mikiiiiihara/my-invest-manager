@@ -33,10 +33,7 @@ const SignInFormComponent = () => {
       alert(data.error);
     } else {
       // エラーが発生していなければページ遷移
-      router.push("/assets").then(() => {
-        // ページのリロード
-        window.location.reload();
-      });
+      router.push("/assets");
     }
   });
   return (
