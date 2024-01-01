@@ -7,23 +7,17 @@ const executeRefreshToken = async () => {
       "Content-Type": "application/json",
     },
     credentials: "include", // Send the cookies
-    // Other settings...
   })
     .then((response) => {
       // レスポンスが 400 または 500 の範囲にある場合、エラーとして処理します
       if (response.status >= 400 && response.status < 600) {
         throw new Error("Bad response from server");
       }
+      console.log(response);
       return response.json();
     })
-    .then((data) => {
-      if (data.success) {
-        // Redirect to the /home page
-        window.location.href = "/home";
-      } else {
-        // Handle the error
-        console.error(data.message);
-      }
+    .then(() => {
+      window.location.href = "/assets";
     })
     .catch((error) => {
       console.error(error);

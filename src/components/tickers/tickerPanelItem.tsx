@@ -42,10 +42,7 @@ const TickerPanelItemComponent: FC<Props> = ({
     <div className={styles.tickerPanelItem}>
       <div className={styles.tickerPanelItemContent} onClick={changeModal}>
         <h3>{data.code}</h3>
-        <p>
-          {currency}
-          {(Math.round(data.price * 10) / 10).toLocaleString()}
-        </p>
+        <p>¥{(Math.round(data.price * 10) / 10).toLocaleString()}</p>
         <p className={rate > 0 ? "text-success" : "text-danger"}>
           {rate}
           {displayType == "balance" ? "" : "%"}
@@ -59,8 +56,7 @@ const TickerPanelItemComponent: FC<Props> = ({
                 <p className={styles.tickerName}>{data.code}</p>
                 <div>
                   <p className={styles.tickerName}>
-                    {currency}
-                    {(Math.round(data.price * 10) / 10).toLocaleString()}
+                    ¥{(Math.round(data.price * 10) / 10).toLocaleString()}
                   </p>
                 </div>
               </div>
@@ -74,26 +70,25 @@ const TickerPanelItemComponent: FC<Props> = ({
               <p className={styles.modalText}>セクター：{data.sector}</p>
               <p className={styles.modalText}>保有株数：{data.quantity}</p>
               <p className={styles.modalText}>
-                取得価格：{currency}
+                取得価格：¥
                 {(Math.round(data.getPrice * 10) / 10).toLocaleString()}
               </p>
               <p className={styles.modalText}>
-                取得為替：{currency}
+                取得為替：¥
                 {data.usdJpy.toLocaleString()}
               </p>
               <p className={styles.modalText}>
-                時価総額：{currency}
+                時価総額：¥
                 {data.sumOfPrice.toLocaleString()}
               </p>
               <p className={styles.modalText}>
                 損益額：
                 <span className={balance > 0 ? "text-success" : "text-danger"}>
-                  {currency}
-                  {balance.toLocaleString()}（{data.balanceRate}%）
+                  ¥{balance.toLocaleString()}（{data.balanceRate}%）
                 </span>
               </p>
               <p className={styles.modalText}>
-                年配当総額：{currency}
+                年配当総額：¥
                 {data.sumOfDividend.toLocaleString()}
               </p>
               <p className={styles.modalText}>

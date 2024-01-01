@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function useSelectedFx() {
-  const [fx, setFx] = useState("$");
+  const [fx, setFx] = useState("¥");
   const changeFx = () => {
     if (fx == "$") {
       setFx("¥");
