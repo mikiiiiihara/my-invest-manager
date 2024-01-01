@@ -3,7 +3,7 @@ import {
   FixedIncomeAsset,
   JapanFund,
   UsStock,
-} from "../../gql/graphql";
+} from "../../../gql/graphql";
 
 export type AllAssets = {
   usStocks: UsStock[];

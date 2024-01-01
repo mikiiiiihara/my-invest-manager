@@ -8,7 +8,10 @@ import {
   useUsStocksQuery,
 } from "../../gql/graphql";
 import { AssetTemplate } from "../../components/templates/assets";
-import { AllAssets, CaluculateAllAssets } from "./calculate-all-assets";
+import {
+  AllAssets,
+  CaluculateAllAssets,
+} from "../../components/templates/assets/calculate-all-assets";
 
 const Assets = () => {
   const { data: usStocksQuery, loading: usStocksQueryLoading } =
