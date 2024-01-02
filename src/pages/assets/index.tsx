@@ -11,7 +11,7 @@ import { AssetTemplate } from "../../components/templates/assets";
 import {
   AllAssets,
   CaluculateAllAssets,
-} from "../../components/templates/assets/calculate-all-assets";
+} from "../../components/templates/assets/logic/calculate-all-assets";
 
 const Assets = () => {
   const { data: usStocksQuery, loading: usStocksQueryLoading } =

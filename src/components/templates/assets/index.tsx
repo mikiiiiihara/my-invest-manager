@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { summarizeAllAssets } from "./summarize-all-asset";
+import { summarizeAllAssets } from "./logic/summarize-all-asset";
 import { Center } from "../../common/center/center";
 import { PrimaryButton } from "../../button/primary-button/primary-button";
 import { HomeMain } from "./home-main";
 import { Empty } from "../../graph/empty";
-import { Asset } from "./calculate-all-assets";
+import { Asset } from "./logic/calculate-all-assets";
 import { Header } from "@/components/common/header/header";
 
 type Props = {

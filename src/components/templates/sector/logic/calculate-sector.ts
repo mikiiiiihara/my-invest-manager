@@ -1,5 +1,5 @@
 import { MarketData } from "@/types/market-data.type";
-import { SectorTickerList } from "../../../constants/sector-ticker-list";
+import { SectorTickerList } from "../../../../constants/sector-ticker-list";
 import { TickerRealData } from "@/types/ticker-real-data.type";
 
 export const calculateSectors = (realData: MarketData[]): TickerRealData[] => {

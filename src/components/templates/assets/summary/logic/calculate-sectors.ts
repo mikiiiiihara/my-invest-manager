@@ -1,6 +1,6 @@
-import { UsStockDetail } from "../types";
-import { PieData } from "../../../../types/pie-data.type";
-import { SectorData } from "../../../../types/sector-data.type";
+import { UsStockDetail } from "../../types";
+import { PieData } from "../../../../../types/pie-data.type";
+import { SectorData } from "../../../../../types/sector-data.type";
 
 export const calculateSectors = (tickerDetail: UsStockDetail[]): PieData[] => {
   // セクター名取得

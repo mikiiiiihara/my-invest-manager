@@ -1,5 +1,5 @@
 import { Asset } from "./calculate-all-assets";
-import { UsStockDetail, UsStockSummary } from "./types";
+import { UsStockDetail, UsStockSummary } from "../types";
 
 export const summarizeAllAssets = (
   asset: Asset[],
