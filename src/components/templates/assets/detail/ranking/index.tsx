@@ -1,5 +1,5 @@
 import React from "react";
-import { TickerPanel } from "../../panels/ticker-panel";
+import { AssetPanel } from "../../panels/asset-panel";
 import { useTickersSummary } from "../../../../../hooks/tickers-summary";
 import { UsStockDetail } from "../../types";
 
@@ -7,7 +7,7 @@ type Props = {
   usStockDetails: UsStockDetail[];
   selectedFx: string;
 };
-const SummaryComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
+const RankingComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
   // 値上がりTOP3
   const dataPriceRateDesc = useTickersSummary(
     usStockDetails,
@@ -47,35 +47,35 @@ const SummaryComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
   return (
     <>
       <h3 className="ml-3">値上がりTOP3</h3>
-      <TickerPanel tickerDetail={dataPriceRateDesc} currency={selectedFx} />
+      <AssetPanel assetDetails={dataPriceRateDesc} currency={selectedFx} />
       <div className="clear-both"></div>
       <h3 className="ml-3">値下がりTOP3</h3>
-      <TickerPanel tickerDetail={dataPriceRateAsc} currency={selectedFx} />
+      <AssetPanel assetDetails={dataPriceRateAsc} currency={selectedFx} />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み益（額）TOP3</h3>
-      <TickerPanel
-        tickerDetail={dataBalanceDesc}
+      <AssetPanel
+        assetDetails={dataBalanceDesc}
         currency={selectedFx}
         displayType="balance"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み損（額）TOP3</h3>
-      <TickerPanel
-        tickerDetail={dataBalanceAsc}
+      <AssetPanel
+        assetDetails={dataBalanceAsc}
         currency={selectedFx}
         displayType="balance"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み益（率）TOP3</h3>
-      <TickerPanel
-        tickerDetail={dataBalanceRateDesc}
+      <AssetPanel
+        assetDetails={dataBalanceRateDesc}
         currency={selectedFx}
         displayType="balanceRate"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み損（率）TOP3</h3>
-      <TickerPanel
-        tickerDetail={dataBalanceRateAsc}
+      <AssetPanel
+        assetDetails={dataBalanceRateAsc}
         currency={selectedFx}
         displayType="balanceRate"
       />
@@ -83,5 +83,5 @@ const SummaryComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
     </>
   );
 };
-SummaryComponent.displayName = "Summary";
-export const Summary = React.memo(SummaryComponent);
+RankingComponent.displayName = "Ranking";
+export const Ranking = React.memo(RankingComponent);

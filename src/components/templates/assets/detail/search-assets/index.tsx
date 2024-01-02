@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { SearchBar } from "../../../../search-bar/search-bar";
-import { TickerPanel } from "../../panels/ticker-panel";
+import { AssetPanel } from "../../panels/asset-panel";
 import { UsStockDetail } from "../../types";
 
 type SearchTickerProps = {
@@ -8,7 +8,7 @@ type SearchTickerProps = {
   selectedFx: string;
 };
 
-export const SearchTickerComponent: React.FC<SearchTickerProps> = ({
+export const SearchAssetsComponent: React.FC<SearchTickerProps> = ({
   usStockDetails,
   selectedFx,
 }) => {
@@ -31,11 +31,11 @@ export const SearchTickerComponent: React.FC<SearchTickerProps> = ({
   return (
     <>
       <SearchBar placeholder="銘柄名、セクターを検索" search={search} />
-      <TickerPanel tickerDetail={tickerList} currency={selectedFx} />
+      <AssetPanel assetDetails={tickerList} currency={selectedFx} />
       <div className="clear-both"></div>
     </>
   );
 };
 
-SearchTickerComponent.displayName = "SearchTicker";
-export const SearchTicker = React.memo(SearchTickerComponent);
+SearchAssetsComponent.displayName = "SearchAssets";
+export const SearchAssets = React.memo(SearchAssetsComponent);

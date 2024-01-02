@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { TickerContent } from "./detail";
+import { AssetDetails } from "./detail";
 import { SummaryContent } from "./summary";
 import { UsStockDetail, UsStockSummary } from "./types";
 
@@ -24,7 +24,7 @@ export const HomeMain: FC<Props> = ({
       {displayMode === DISPLAY_MODE.summary ? (
         <SummaryContent usStockDetail={usStockDetail} />
       ) : (
-        <TickerContent usStockSummary={usStockSummary} />
+        <AssetDetails usStockSummary={usStockSummary} />
       )}
     </>
   );

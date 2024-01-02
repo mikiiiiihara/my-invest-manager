@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import { SearchTicker } from "./search-ticker/search-ticker";
+import { SearchAssets } from "./search-assets";
 import { useTickerContext } from "../../../../contexts/tickers-context";
-import { Summary } from "./summary/summary";
+import { Ranking } from "./ranking";
 import { PrimaryButton } from "../../../button/primary-button/primary-button";
 import { UsStockSummary } from "../types";
 
@@ -12,7 +12,7 @@ const DISPLAY_MODE = {
 type Props = {
   usStockSummary: UsStockSummary;
 };
-const TickeContentComponent: React.FC<Props> = ({ usStockSummary }) => {
+const AssetDetailsComponent: React.FC<Props> = ({ usStockSummary }) => {
   //表示切り替え用
   const [displayMode, setDisplayMode] = useState(DISPLAY_MODE.detail);
   // サマリー画面を表示
@@ -46,12 +46,12 @@ const TickeContentComponent: React.FC<Props> = ({ usStockSummary }) => {
         />
       </div>
       {displayMode === DISPLAY_MODE.summary ? (
-        <Summary usStockDetails={usStockDetails} selectedFx={fx} />
+        <Ranking usStockDetails={usStockDetails} selectedFx={fx} />
       ) : (
-        <SearchTicker usStockDetails={usStockDetails} selectedFx={fx} />
+        <SearchAssets usStockDetails={usStockDetails} selectedFx={fx} />
       )}
     </>
   );
 };
-TickeContentComponent.displayName = "TickerContent";
-export const TickerContent = React.memo(TickeContentComponent);
+AssetDetailsComponent.displayName = "AssetDetails";
+export const AssetDetails = React.memo(AssetDetailsComponent);

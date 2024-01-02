@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import styles from "./ticker-panel-item.module.scss";
+import styles from "./asset-panel-item.module.scss";
 import { UsStockDetail } from "../types";
 
 // 表示タイプ
@@ -16,7 +16,7 @@ type Props = {
   displayType?: DisplayType;
 };
 
-const TickerPanelItemComponent: FC<Props> = ({ data, displayType }) => {
+const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
   // モーダル表示切り替え用
   const [modalState, setModalState] = useState(false);
   const changeModal = () => {
@@ -101,5 +101,5 @@ const TickerPanelItemComponent: FC<Props> = ({ data, displayType }) => {
   );
 };
 
-TickerPanelItemComponent.displayName = "TickerPanelItem";
-export const TickerPanelItem = React.memo(TickerPanelItemComponent);
+AssetPanelItemComponent.displayName = "AssetPanelItem";
+export const AssetPanelItem = React.memo(AssetPanelItemComponent);
