@@ -6,6 +6,8 @@ import { HomeMain } from "./home-main";
 import { Empty } from "../../graph/empty";
 import { Asset } from "./logic/calculate-all-assets";
 import { Header } from "@/components/common/header/header";
+import { Modal } from "@/components/modal/modal";
+import { CreateForm } from "./forms/create";
 
 type Props = {
   assets: Asset[];
@@ -33,6 +35,8 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     crypto: true,
     fixedIncomeAsset: true,
   });
+  const [showAddModal, setAddModal] = useState(false);
+  const ShowAddModal = useCallback(() => setAddModal(true), []);
   const [displayMode, setDisplayMode] = useState(DISPLAY_MODE.summary);
   const changeDisplayToSummary = useCallback(
     () => setDisplayMode(DISPLAY_MODE.summary),
@@ -119,6 +123,16 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
           <Empty />
         )}
       </div>
+      <PrimaryButton
+        content="銘柄を追加"
+        onClick={ShowAddModal}
+        isForContent={true}
+      />
+      <Modal
+        showFlag={showAddModal}
+        setShowModal={setAddModal}
+        content={<CreateForm setShowModal={setAddModal} />}
+      />
     </Center>
   );
 };

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { AssetDetails } from "./detail";
-import { SummaryContent } from "./summary";
+import { Summary } from "./summary";
 import { UsStockDetail, UsStockSummary } from "./types";
 
 type Props = {
@@ -22,7 +22,7 @@ export const HomeMain: FC<Props> = ({
   return (
     <>
       {displayMode === DISPLAY_MODE.summary ? (
-        <SummaryContent usStockDetail={usStockDetail} />
+        <Summary usStockDetail={usStockDetail} />
       ) : (
         <AssetDetails usStockSummary={usStockSummary} />
       )}
