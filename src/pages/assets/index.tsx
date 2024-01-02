@@ -49,13 +49,13 @@ const Assets = () => {
   // ４種類の資産を集約
   const assets = CaluculateAllAssets(allAssets);
   return (
-    <>
+    <div style={{ paddingBottom: "6rem" }}>
       <NextHead title="My US Stock Portfolio | Assets" />
       <AssetTemplate
         assets={assets ?? []}
         currentUsdJpy={currentUsdJpyQuery?.currentUsdJpy ?? 0}
       />
-    </>
+    </div>
   );
 };
 export default Assets;
