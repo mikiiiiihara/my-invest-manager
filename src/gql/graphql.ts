@@ -229,6 +229,34 @@ export type JapanFundsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type JapanFundsQuery = { __typename?: 'Query', japanFunds?: Array<{ __typename?: 'JapanFund', id: string, code: string, name: string, getPrice: number, getPriceTotal: number, currentPrice: number }> | null };
 
+export type CreateUsStockMutationVariables = Exact<{
+  input: CreateUsStockInput;
+}>;
+
+
+export type CreateUsStockMutation = { __typename?: 'Mutation', createUsStock: { __typename?: 'UsStock', id: string, code: string, getPrice: number, dividend: number, quantity: number, sector: string, usdJpy: number, currentPrice: number, priceGets: number, currentRate: number } };
+
+export type CreateCryptoMutationVariables = Exact<{
+  input: CreateCryptoInput;
+}>;
+
+
+export type CreateCryptoMutation = { __typename?: 'Mutation', createCrypto: { __typename?: 'Crypto', id: string, code: string, getPrice: number, quantity: number, currentPrice: number } };
+
+export type CreateFixedIncomeAssetMutationVariables = Exact<{
+  input: CreateFixedIncomeAssetInput;
+}>;
+
+
+export type CreateFixedIncomeAssetMutation = { __typename?: 'Mutation', createFixedIncomeAsset: { __typename?: 'FixedIncomeAsset', id: string, code: string, getPriceTotal: number, dividendRate: number, usdJpy?: number | null, paymentMonth: Array<number> } };
+
+export type CreateJapanFundMutationVariables = Exact<{
+  input: CreateJapanFundInput;
+}>;
+
+
+export type CreateJapanFundMutation = { __typename?: 'Mutation', createJapanFund: { __typename?: 'JapanFund', id: string, code: string, name: string, getPrice: number, getPriceTotal: number, currentPrice: number } };
+
 export type MarketPricesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -451,6 +479,161 @@ export type JapanFundsQueryHookResult = ReturnType<typeof useJapanFundsQuery>;
 export type JapanFundsLazyQueryHookResult = ReturnType<typeof useJapanFundsLazyQuery>;
 export type JapanFundsSuspenseQueryHookResult = ReturnType<typeof useJapanFundsSuspenseQuery>;
 export type JapanFundsQueryResult = Apollo.QueryResult<JapanFundsQuery, JapanFundsQueryVariables>;
+export const CreateUsStockDocument = gql`
+    mutation CreateUsStock($input: CreateUsStockInput!) {
+  createUsStock(input: $input) {
+    id
+    code
+    getPrice
+    dividend
+    quantity
+    sector
+    usdJpy
+    currentPrice
+    priceGets
+    currentRate
+  }
+}
+    `;
+export type CreateUsStockMutationFn = Apollo.MutationFunction<CreateUsStockMutation, CreateUsStockMutationVariables>;
+
+/**
+ * __useCreateUsStockMutation__
+ *
+ * To run a mutation, you first call `useCreateUsStockMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUsStockMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUsStockMutation, { data, loading, error }] = useCreateUsStockMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateUsStockMutation(baseOptions?: Apollo.MutationHookOptions<CreateUsStockMutation, CreateUsStockMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateUsStockMutation, CreateUsStockMutationVariables>(CreateUsStockDocument, options);
+      }
+export type CreateUsStockMutationHookResult = ReturnType<typeof useCreateUsStockMutation>;
+export type CreateUsStockMutationResult = Apollo.MutationResult<CreateUsStockMutation>;
+export type CreateUsStockMutationOptions = Apollo.BaseMutationOptions<CreateUsStockMutation, CreateUsStockMutationVariables>;
+export const CreateCryptoDocument = gql`
+    mutation CreateCrypto($input: CreateCryptoInput!) {
+  createCrypto(input: $input) {
+    id
+    code
+    getPrice
+    quantity
+    currentPrice
+  }
+}
+    `;
+export type CreateCryptoMutationFn = Apollo.MutationFunction<CreateCryptoMutation, CreateCryptoMutationVariables>;
+
+/**
+ * __useCreateCryptoMutation__
+ *
+ * To run a mutation, you first call `useCreateCryptoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCryptoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCryptoMutation, { data, loading, error }] = useCreateCryptoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateCryptoMutation(baseOptions?: Apollo.MutationHookOptions<CreateCryptoMutation, CreateCryptoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateCryptoMutation, CreateCryptoMutationVariables>(CreateCryptoDocument, options);
+      }
+export type CreateCryptoMutationHookResult = ReturnType<typeof useCreateCryptoMutation>;
+export type CreateCryptoMutationResult = Apollo.MutationResult<CreateCryptoMutation>;
+export type CreateCryptoMutationOptions = Apollo.BaseMutationOptions<CreateCryptoMutation, CreateCryptoMutationVariables>;
+export const CreateFixedIncomeAssetDocument = gql`
+    mutation CreateFixedIncomeAsset($input: CreateFixedIncomeAssetInput!) {
+  createFixedIncomeAsset(input: $input) {
+    id
+    code
+    getPriceTotal
+    dividendRate
+    usdJpy
+    paymentMonth
+  }
+}
+    `;
+export type CreateFixedIncomeAssetMutationFn = Apollo.MutationFunction<CreateFixedIncomeAssetMutation, CreateFixedIncomeAssetMutationVariables>;
+
+/**
+ * __useCreateFixedIncomeAssetMutation__
+ *
+ * To run a mutation, you first call `useCreateFixedIncomeAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateFixedIncomeAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createFixedIncomeAssetMutation, { data, loading, error }] = useCreateFixedIncomeAssetMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateFixedIncomeAssetMutation(baseOptions?: Apollo.MutationHookOptions<CreateFixedIncomeAssetMutation, CreateFixedIncomeAssetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateFixedIncomeAssetMutation, CreateFixedIncomeAssetMutationVariables>(CreateFixedIncomeAssetDocument, options);
+      }
+export type CreateFixedIncomeAssetMutationHookResult = ReturnType<typeof useCreateFixedIncomeAssetMutation>;
+export type CreateFixedIncomeAssetMutationResult = Apollo.MutationResult<CreateFixedIncomeAssetMutation>;
+export type CreateFixedIncomeAssetMutationOptions = Apollo.BaseMutationOptions<CreateFixedIncomeAssetMutation, CreateFixedIncomeAssetMutationVariables>;
+export const CreateJapanFundDocument = gql`
+    mutation CreateJapanFund($input: CreateJapanFundInput!) {
+  createJapanFund(input: $input) {
+    id
+    code
+    name
+    getPrice
+    getPriceTotal
+    currentPrice
+  }
+}
+    `;
+export type CreateJapanFundMutationFn = Apollo.MutationFunction<CreateJapanFundMutation, CreateJapanFundMutationVariables>;
+
+/**
+ * __useCreateJapanFundMutation__
+ *
+ * To run a mutation, you first call `useCreateJapanFundMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateJapanFundMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createJapanFundMutation, { data, loading, error }] = useCreateJapanFundMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useCreateJapanFundMutation(baseOptions?: Apollo.MutationHookOptions<CreateJapanFundMutation, CreateJapanFundMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateJapanFundMutation, CreateJapanFundMutationVariables>(CreateJapanFundDocument, options);
+      }
+export type CreateJapanFundMutationHookResult = ReturnType<typeof useCreateJapanFundMutation>;
+export type CreateJapanFundMutationResult = Apollo.MutationResult<CreateJapanFundMutation>;
+export type CreateJapanFundMutationOptions = Apollo.BaseMutationOptions<CreateJapanFundMutation, CreateJapanFundMutationVariables>;
 export const MarketPricesDocument = gql`
     query marketPrices {
   marketPrices(
