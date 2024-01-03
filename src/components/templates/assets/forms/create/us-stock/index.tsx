@@ -5,6 +5,7 @@ import { useApolloClient } from "@apollo/client";
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import { sectorList } from "./sector-list";
+import toast from "react-hot-toast";
 
 type CreateUsStock = {
   code: string;
@@ -57,6 +58,7 @@ const CreateUsStockFormComponent: FC<Props> = ({ setShowModal }) => {
             },
           },
         });
+        toast.success(`${code}を追加しました`);
         reset(); // フォームのリセット
         setShowModal(false);
       } catch (error) {

@@ -1,4 +1,5 @@
 import { onError } from "@apollo/client/link/error";
+import toast from "react-hot-toast";
 
 const executeRefreshToken = async () => {
   fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/refresh`, {
@@ -39,7 +40,7 @@ export const errorLink = onError(({ graphQLErrors, networkError }) => {
         default:
           console.log(`[GraphQL error]: ${err.message}`);
           // ポップアップを表示
-          alert(`${err.message}`);
+          toast.error(`${err.message}`);
           break;
       }
     }

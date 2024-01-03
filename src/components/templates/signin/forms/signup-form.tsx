@@ -3,6 +3,7 @@ import { FormGroup } from "@/components/forms/form-group";
 import { useRouter } from "next/router";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 type SignUp = {
   name: string;
@@ -33,7 +34,7 @@ const SignUpFormComponent = () => {
     const data = await response.json();
     console.log(data);
     if (data.error) {
-      alert(data.error);
+      toast.error(data.error);
     } else {
       // エラーが発生していなければページ遷移
       router.push("/assets");
