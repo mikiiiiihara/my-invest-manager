@@ -72,7 +72,6 @@ const TotalAssetsComponent: FC<Props> = ({
         </h3>
         {totalAssets.length > 0 ? (
           <>
-            {" "}
             <PrimaryButton
               content="1週間"
               onClick={() => refetch({ day: 7 })}
