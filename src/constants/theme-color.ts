@@ -12,4 +12,9 @@ export const themeDefault = [
   "#ff9966",
 ];
 export const themeElectronic = ["#4fd4fd", "#000066"];
-export const themeForest = ["rgb(82, 231, 171)", "#00CC66", "#006633"];
+export const themeForest = [
+  "rgb(82, 231, 171)",
+  "#00CC66",
+  "#3CB371",
+  "#006633",
+];
