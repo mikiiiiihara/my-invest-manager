@@ -99,6 +99,7 @@ const TotalAssetsComponent: FC<Props> = ({
   currentUsdJpy,
 }) => {
   const latestTotalAsset = totalAssets[totalAssets.length - 1];
+  console.log(latestTotalAsset);
   const amountsByAsset = caluculateAmountByAsset(
     latestTotalAsset,
     currentUsdJpy
