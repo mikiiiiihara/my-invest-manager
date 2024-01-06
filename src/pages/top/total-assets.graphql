@@ -1,0 +1,12 @@
+query TotalAssets($day: Int!) {
+  totalAssets(day: $day) {
+    id
+    cashJpy
+    cashUsd
+    stock
+    fund
+    crypto
+    fixedIncomeAsset
+    createdAt
+  }
+}

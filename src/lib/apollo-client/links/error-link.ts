@@ -18,7 +18,7 @@ const executeRefreshToken = async () => {
       return response.json();
     })
     .then(() => {
-      window.location.href = "/assets";
+      window.location.href = "/top";
     })
     .catch((error) => {
       console.error(error);

@@ -4,9 +4,8 @@
  * @type {{HOME: string, PORTFOLIO: string, ASSET: string, DIVIDEND: string, SECTOR: string}}
  */
 export const NAVIGATION_LIST = {
-  HOME: "/home",
   DIVIDEND: "/dividend",
-  ASSET: "/assets",
+  PORTFOLIO: "/portfolio",
   SECTOR: "/sector",
-  TOP: "/",
+  TOP: "/top",
 } as const;

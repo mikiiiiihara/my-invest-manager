@@ -15,6 +15,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  Date: { input: any; output: any; }
 };
 
 export type CreateCryptoInput = {
@@ -164,6 +165,7 @@ export type Query = {
   fixedIncomeAssets?: Maybe<Array<FixedIncomeAsset>>;
   japanFunds?: Maybe<Array<JapanFund>>;
   marketPrices: Array<MarketPrice>;
+  totalAssets?: Maybe<Array<TotalAsset>>;
   usStocks?: Maybe<Array<UsStock>>;
   user?: Maybe<User>;
 };
@@ -171,6 +173,47 @@ export type Query = {
 
 export type QueryMarketPricesArgs = {
   tickerList: Array<InputMaybe<Scalars['String']['input']>>;
+};
+
+
+export type QueryTotalAssetsArgs = {
+  day: Scalars['Int']['input'];
+};
+
+export type TotalAsset = {
+  __typename?: 'TotalAsset';
+  /** 保有円 */
+  cashJpy: Scalars['Float']['output'];
+  /** 保有ドル */
+  cashUsd: Scalars['Float']['output'];
+  /** 登録日時 */
+  createdAt: Scalars['Date']['output'];
+  /** 保有仮想通貨 */
+  crypto: Scalars['Float']['output'];
+  /** 保有固定利回り資産 */
+  fixedIncomeAsset: Scalars['Float']['output'];
+  /** 保有投資信託 */
+  fund: Scalars['Float']['output'];
+  id: Scalars['ID']['output'];
+  /** 保有株式 */
+  stock: Scalars['Float']['output'];
+};
+
+export type UpdateUsStockInput = {
+  /** 現在価格 */
+  currentPrice: Scalars['Float']['input'];
+  /** 変化率 */
+  currentRate: Scalars['Float']['input'];
+  /** 取得価格 */
+  getPrice: Scalars['Float']['input'];
+  /** id */
+  id: Scalars['ID']['input'];
+  /** 変化額 */
+  priceGets: Scalars['Float']['input'];
+  /** 保有株数 */
+  quantity: Scalars['Float']['input'];
+  /** 購入時為替 */
+  usdJpy: Scalars['Float']['input'];
 };
 
 export type UsStock = {
@@ -261,6 +304,13 @@ export type MarketPricesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MarketPricesQuery = { __typename?: 'Query', marketPrices: Array<{ __typename?: 'MarketPrice', ticker: string, currentPrice: number, currentRate: number, priceGets: number }> };
+
+export type TotalAssetsQueryVariables = Exact<{
+  day: Scalars['Int']['input'];
+}>;
+
+
+export type TotalAssetsQuery = { __typename?: 'Query', totalAssets?: Array<{ __typename?: 'TotalAsset', id: string, cashJpy: number, cashUsd: number, stock: number, fund: number, crypto: number, fixedIncomeAsset: number, createdAt: any }> | null };
 
 
 export const UsStocksDocument = gql`
@@ -678,3 +728,50 @@ export type MarketPricesQueryHookResult = ReturnType<typeof useMarketPricesQuery
 export type MarketPricesLazyQueryHookResult = ReturnType<typeof useMarketPricesLazyQuery>;
 export type MarketPricesSuspenseQueryHookResult = ReturnType<typeof useMarketPricesSuspenseQuery>;
 export type MarketPricesQueryResult = Apollo.QueryResult<MarketPricesQuery, MarketPricesQueryVariables>;
+export const TotalAssetsDocument = gql`
+    query TotalAssets($day: Int!) {
+  totalAssets(day: $day) {
+    id
+    cashJpy
+    cashUsd
+    stock
+    fund
+    crypto
+    fixedIncomeAsset
+    createdAt
+  }
+}
+    `;
+
+/**
+ * __useTotalAssetsQuery__
+ *
+ * To run a query within a React component, call `useTotalAssetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTotalAssetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTotalAssetsQuery({
+ *   variables: {
+ *      day: // value for 'day'
+ *   },
+ * });
+ */
+export function useTotalAssetsQuery(baseOptions: Apollo.QueryHookOptions<TotalAssetsQuery, TotalAssetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TotalAssetsQuery, TotalAssetsQueryVariables>(TotalAssetsDocument, options);
+      }
+export function useTotalAssetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TotalAssetsQuery, TotalAssetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TotalAssetsQuery, TotalAssetsQueryVariables>(TotalAssetsDocument, options);
+        }
+export function useTotalAssetsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<TotalAssetsQuery, TotalAssetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<TotalAssetsQuery, TotalAssetsQueryVariables>(TotalAssetsDocument, options);
+        }
+export type TotalAssetsQueryHookResult = ReturnType<typeof useTotalAssetsQuery>;
+export type TotalAssetsLazyQueryHookResult = ReturnType<typeof useTotalAssetsLazyQuery>;
+export type TotalAssetsSuspenseQueryHookResult = ReturnType<typeof useTotalAssetsSuspenseQuery>;
+export type TotalAssetsQueryResult = Apollo.QueryResult<TotalAssetsQuery, TotalAssetsQueryVariables>;

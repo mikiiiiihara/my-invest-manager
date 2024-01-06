@@ -35,7 +35,7 @@ const SignInFormComponent = () => {
       toast.error(data.error);
     } else {
       // エラーが発生していなければページ遷移
-      router.push("/assets");
+      router.push("/top");
     }
   });
   return (

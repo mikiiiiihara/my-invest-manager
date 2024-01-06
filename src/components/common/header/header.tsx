@@ -26,10 +26,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
         className={`${styles.navbar} navbar-expand-lg navbar-dark bg-dark d-none-tb`}
       >
         <div className="container-xl">
-          <Link
-            href={NAVIGATION_LIST.ASSET}
-            className="navbar-brand float-left"
-          >
+          <Link href={NAVIGATION_LIST.TOP} className="navbar-brand float-left">
             My US Stock Portfolio
           </Link>
           <ul className={`navbar-nav mr-auto float-left ${styles.subMenu}`}>
@@ -38,11 +35,11 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
                 Dividend
               </Link>
             </li> */}
-            {/* <li className="nav-item">
-              <Link href={NAVIGATION_LIST.ASSET} className="nav-link">
-                Stock
+            <li className="nav-item">
+              <Link href={NAVIGATION_LIST.PORTFOLIO} className="nav-link">
+                Portfolio
               </Link>
-            </li> */}
+            </li>
             <li className="nav-item">
               <Link href={NAVIGATION_LIST.SECTOR} className="nav-link">
                 Sector
@@ -53,7 +50,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
       </Nav>
       <div className={styles.navSp}>
         <div className={styles.navSpContent}>
-          <Link href={NAVIGATION_LIST.ASSET}>
+          <Link href={NAVIGATION_LIST.TOP}>
             <div className={styles.navSpItem}>
               <Image
                 src="/asset.png"
@@ -62,7 +59,7 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
                 style={{ objectFit: "contain" }}
                 alt="logo"
               />
-              <p>Home</p>
+              <p>Top</p>
             </div>
           </Link>
           {/* <Link href={NAVIGATION_LIST.DIVIDEND}>
@@ -77,18 +74,18 @@ const HeaderComponent: FC<Props> = ({ userName }) => {
               <p>Dividend</p>
             </div>
           </Link> */}
-          {/* <Link href={NAVIGATION_LIST.ASSET}>
+          <Link href={NAVIGATION_LIST.PORTFOLIO}>
             <div className={styles.navSpItem}>
               <Image
-                src="/home.png"
+                src="/portfolio.png"
                 width={36}
                 height={36}
                 style={{ objectFit: "contain" }}
                 alt="logo"
               />
-              <p>Stock</p>
+              <p>Portfolio</p>
             </div>
-          </Link> */}
+          </Link>
           <Link href={NAVIGATION_LIST.SECTOR}>
             <div className={styles.navSpItem}>
               <Image
