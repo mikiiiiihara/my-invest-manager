@@ -10,3 +10,7 @@ query TotalAssets($day: Int!) {
     createdAt
   }
 }
+
+query CurrentUsdJpy {
+  currentUsdJpy
+}

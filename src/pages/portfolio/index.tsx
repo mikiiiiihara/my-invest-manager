@@ -50,7 +50,7 @@ const Assets = () => {
   const assets = CaluculateAllAssets(allAssets);
   return (
     <div style={{ paddingBottom: "6rem" }}>
-      <NextHead title="My US Stock Portfolio | Assets" />
+      <NextHead title="My US Stock Portfolio | Portfolio" />
       <AssetTemplate
         assets={assets ?? []}
         currentUsdJpy={currentUsdJpyQuery?.currentUsdJpy ?? 0}

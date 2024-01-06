@@ -6,6 +6,7 @@ import { Exact, TotalAsset, TotalAssetsQuery } from "@/gql/graphql";
 import { ApolloQueryResult } from "@apollo/client";
 import { StackedArea } from "@/components/graph/StackedArea";
 import { themeForest } from "@/constants/theme-color";
+import { Empty } from "@/components/graph/empty";
 
 type Props = {
   totalAssets: TotalAsset[];
@@ -69,18 +70,37 @@ const TotalAssetsComponent: FC<Props> = ({
               ).toLocaleString()
             : 0}
         </h3>
-        <PrimaryButton content="1週間" onClick={() => refetch({ day: 7 })} />
-        <PrimaryButton content="1ヶ月" onClick={() => refetch({ day: 30 })} />
-        <PrimaryButton content="3ヶ月" onClick={() => refetch({ day: 90 })} />
-        <PrimaryButton content="全期間" onClick={() => refetch({ day: 0 })} />
-        <StackedArea
-          xData={totalAssets.map((asset) => formatDate(asset.createdAt))}
-          yData={totalAssets.map((asset) =>
-            caluclateTotalAsset(asset, currentUsdJpy)
-          )}
-          themeColor={themeForest[0]}
-          background="#343a40"
-        />
+        {totalAssets.length > 0 ? (
+          <>
+            {" "}
+            <PrimaryButton
+              content="1週間"
+              onClick={() => refetch({ day: 7 })}
+            />
+            <PrimaryButton
+              content="1ヶ月"
+              onClick={() => refetch({ day: 30 })}
+            />
+            <PrimaryButton
+              content="3ヶ月"
+              onClick={() => refetch({ day: 90 })}
+            />
+            <PrimaryButton
+              content="全期間"
+              onClick={() => refetch({ day: 0 })}
+            />
+            <StackedArea
+              xData={totalAssets.map((asset) => formatDate(asset.createdAt))}
+              yData={totalAssets.map((asset) =>
+                caluclateTotalAsset(asset, currentUsdJpy)
+              )}
+              themeColor={themeForest[0]}
+              background="#343a40"
+            />
+          </>
+        ) : (
+          <Empty />
+        )}
       </div>
     </Center>
   );
