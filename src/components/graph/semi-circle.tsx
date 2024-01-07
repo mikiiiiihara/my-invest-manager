@@ -26,7 +26,8 @@ const SemiCircleComponent: FC<Props> = ({ values, themeColor, background }) => {
       y: 60,
     },
     tooltip: {
-      pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+      pointFormat:
+        "{series.name}: <b>{point.percentage:.1f}%</b><br/><p>金額：{point.y}円</p>",
     },
     accessibility: {
       point: {

@@ -24,7 +24,8 @@ const PieComponent: FC<Props> = ({ pieData, themeColor, background }) => {
     },
     exporting: { enabled: false },
     tooltip: {
-      pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
+      pointFormat:
+        "{series.name}: <b>{point.percentage:.1f}%</b><br/><p>金額：{point.y}円</p>",
     },
     accessibility: {
       point: {
