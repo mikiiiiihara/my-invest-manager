@@ -65,6 +65,7 @@ const TotalAssetsDetailComponent: FC<Props> = ({
         {priceGap.toLocaleString()}({balanceIcon}
         {displayPriceRate}%)
       </p>
+      <PrimaryButton content="1日" onClick={() => refetch({ day: 2 })} />
       <PrimaryButton content="1週間" onClick={() => refetch({ day: 7 })} />
       <PrimaryButton content="1ヶ月" onClick={() => refetch({ day: 30 })} />
       <PrimaryButton content="3ヶ月" onClick={() => refetch({ day: 90 })} />

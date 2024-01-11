@@ -5,7 +5,7 @@ import { TotalAssetTemplate } from "@/components/templates/total-assets";
 
 const Assets = () => {
   const { data, loading, refetch } = useTotalAssetsQuery({
-    variables: { day: 7 }, // デフォルトは7日間
+    variables: { day: 2 }, // デフォルトは2日間
   });
   const { data: currentUsdJpyQuery, loading: currentUsdJpyQueryLoading } =
     useCurrentUsdJpyQuery();
