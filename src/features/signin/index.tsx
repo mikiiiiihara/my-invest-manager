@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Center } from "../../common/center/center";
-import { Header } from "../../common/header/header";
+import { Center } from "../../components/common/center/center";
+import { Header } from "../../components/common/header/header";
 import { SignInForm } from "./forms/signin-form";
 import { SignUpForm } from "./forms/signup-form";
 

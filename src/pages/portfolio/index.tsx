@@ -7,11 +7,11 @@ import {
   useJapanFundsQuery,
   useUsStocksQuery,
 } from "../../gql/graphql";
-import { AssetTemplate } from "../../components/templates/assets";
+import { AssetTemplate } from "../../features/assets";
 import {
   AllAssets,
   CaluculateAllAssets,
-} from "../../components/templates/assets/logic/calculate-all-assets";
+} from "../../features/assets/logic/calculate-all-assets";
 
 const Assets = () => {
   const { data: usStocksQuery, loading: usStocksQueryLoading } =

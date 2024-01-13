@@ -1,4 +1,4 @@
-import { TopTemplate } from "@/components/templates/top";
+import { TopTemplate } from "@/features/top";
 import { NextHead } from "../components/common/next-head/nextHead";
 
 const Top = () => {

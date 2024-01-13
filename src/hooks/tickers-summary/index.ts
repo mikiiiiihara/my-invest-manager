@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { UsStockDetail } from "../../components/templates/assets/types";
+import { UsStockDetail } from "../../features/assets/types";
 
 export const useTickersSummary = (
   usStockDetails: UsStockDetail[],

@@ -1,7 +1,7 @@
 import { NextHead } from "../../components/common/next-head/nextHead";
 import { Loading } from "../../components/common/loading/loading";
 import { useCurrentUsdJpyQuery, useTotalAssetsQuery } from "../../gql/graphql";
-import { TotalAssetTemplate } from "@/components/templates/total-assets";
+import { TotalAssetTemplate } from "@/features/total-assets";
 
 const Assets = () => {
   const { data, loading, refetch } = useTotalAssetsQuery({

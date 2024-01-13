@@ -1,5 +1,5 @@
 import { NextHead } from "@/components/common/next-head/nextHead";
-import { SignInTemplate } from "@/components/templates/signin";
+import { SignInTemplate } from "@/features/signin";
 
 const SignIn = () => {
   return (

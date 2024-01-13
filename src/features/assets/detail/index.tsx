@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { SearchAssets } from "./search-assets";
-import { useTickerContext } from "../../../../contexts/tickers-context";
+import { useTickerContext } from "../../../contexts/tickers-context";
 import { Ranking } from "./ranking";
-import { PrimaryButton } from "../../../button/primary-button/primary-button";
+import { PrimaryButton } from "../../../components/button/primary-button/primary-button";
 import { UsStockSummary } from "../types";
 
 const DISPLAY_MODE = {

@@ -1,7 +1,7 @@
 import { NextHead } from "../../components/common/next-head/nextHead";
 import { Loading } from "../../components/common/loading/loading";
 import { useMarketPricesQuery } from "../../gql/graphql";
-import { SectorTemplate } from "../../components/templates/sector";
+import { SectorTemplate } from "../../features/sector";
 
 const Sector = () => {
   const { data, loading } = useMarketPricesQuery();

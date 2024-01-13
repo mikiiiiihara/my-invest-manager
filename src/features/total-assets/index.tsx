@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Center } from "../../common/center/center";
+import { Center } from "../../components/common/center/center";
 import { Header } from "@/components/common/header/header";
 import { Exact, TotalAsset, TotalAssetsQuery } from "@/gql/graphql";
 import { ApolloQueryResult } from "@apollo/client";

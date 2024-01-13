@@ -1,4 +1,4 @@
-import { UsStockDetail } from "@/components/templates/assets/types";
+import { UsStockDetail } from "@/features/assets/types";
 import { PieData } from "@/types/pie-data.type";
 
 export const calculateTickerPie = (

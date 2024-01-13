@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SearchBar } from "../../../../search-bar/search-bar";
+import { SearchBar } from "../../../../components/search-bar/search-bar";
 import { AssetPanel } from "../../panels/asset-panel";
 import { UsStockDetail } from "../../types";
 

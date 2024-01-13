@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { Center } from "../../common/center/center";
+import { Center } from "../../components/common/center/center";
 import { SectorPanel } from "./panels/sector-panel";
-import { Header } from "../../common/header/header";
+import { Header } from "../../components/common/header/header";
 import { calculateSectors } from "./logic/calculate-sector";
 import { MarketData } from "@/types/market-data.type";
 

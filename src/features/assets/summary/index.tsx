@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useMemo, useState } from "react";
-import { Pie } from "../../../graph/pie";
-import { themeDefault } from "../../../../constants/theme-color";
-import { PrimaryButton } from "../../../button/primary-button/primary-button";
+import { Pie } from "../../../components/graph/pie";
+import { themeDefault } from "../../../constants/theme-color";
+import { PrimaryButton } from "../../../components/button/primary-button/primary-button";
 import { calculateSectors } from "./logic/calculate-sectors";
 import { calculateTickerPie } from "./logic/calculate-ticker-pie";
 import { UsStockDetail } from "../types";
