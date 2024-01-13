@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from "react";
 import { SearchAssets } from "./search-assets";
-import { useTickerContext } from "../../../contexts/tickers-context";
 import { Ranking } from "./ranking";
 import { PrimaryButton } from "../../../components/button/primary-button/primary-button";
 import { UsStockSummary } from "../types";
@@ -23,9 +22,6 @@ const AssetDetailsComponent: React.FC<Props> = ({ usStockSummary }) => {
   const changeDisplayToDetail = useCallback(() => {
     setDisplayMode(DISPLAY_MODE.detail);
   }, []);
-  // コンテキストから以下を取得
-  // (左から順に)画面表示する為替の値、画面表示する為替を切り替える関数、保有株式情報、現在のドル円
-  const { fx } = useTickerContext();
   // 一覧表示用の配列をTickerでアルファベット順にソート
   const usStockDetails = [...usStockSummary.usStockDetails].sort((a, b) =>
     a.code.localeCompare(b.code)
@@ -46,9 +42,9 @@ const AssetDetailsComponent: React.FC<Props> = ({ usStockSummary }) => {
         />
       </div>
       {displayMode === DISPLAY_MODE.summary ? (
-        <Ranking usStockDetails={usStockDetails} selectedFx={fx} />
+        <Ranking usStockDetails={usStockDetails} selectedFx={"¥"} />
       ) : (
-        <SearchAssets usStockDetails={usStockDetails} selectedFx={fx} />
+        <SearchAssets usStockDetails={usStockDetails} selectedFx={"¥"} />
       )}
     </>
   );

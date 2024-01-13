@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Center } from "../../components/common/center/center";
-import { Header } from "@/components/common/header/header";
 import { Exact, TotalAsset, TotalAssetsQuery } from "@/gql/graphql";
 import { ApolloQueryResult } from "@apollo/client";
 import { Empty } from "@/components/graph/empty";
@@ -29,7 +28,6 @@ const TotalAssetsComponent: FC<Props> = ({
   const latestTotalAsset = totalAssets[totalAssets.length - 1];
   return (
     <Center>
-      <Header />
       <div className="content">
         <h1>資産総額推移</h1>
         <h3>

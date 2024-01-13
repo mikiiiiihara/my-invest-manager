@@ -5,7 +5,6 @@ import { PrimaryButton } from "../../components/button/primary-button/primary-bu
 import { HomeMain } from "./home-main";
 import { Empty } from "../../components/graph/empty";
 import { Asset } from "./logic/calculate-all-assets";
-import { Header } from "@/components/common/header/header";
 import { Modal } from "@/components/modal/modal";
 import { CreateForm } from "./forms/create";
 
@@ -90,7 +89,6 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
   );
   return (
     <Center>
-      <Header />
       <div className="content">
         <h1>保有株式総額¥:{priceTotal.toLocaleString()}</h1>
         <p className={balanceRateClass}>

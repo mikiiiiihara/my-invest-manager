@@ -1,4 +1,3 @@
-import { Header } from "@/components/common/header/header";
 import { Pie } from "@/components/graph/pie";
 import { themeDefault } from "@/constants/theme-color";
 import { PieData } from "@/types/pie-data.type";
@@ -19,7 +18,6 @@ const TopComponent = () => {
   ];
   return (
     <div className={styles.top}>
-      <Header />
       <div className={styles.title}>
         <p>
           あらゆる資産を一元管理
