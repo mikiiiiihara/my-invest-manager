@@ -16,6 +16,8 @@ type Props = {
   usStockDetail: UsStockDetail[];
 };
 
+const MemoizedPie = React.memo(Pie); // Pieコンポーネントをメモ化
+
 const SummaryComponent: FC<Props> = ({ usStockDetail }) => {
   // 画面表示
   //表示切り替え用
@@ -51,7 +53,7 @@ const SummaryComponent: FC<Props> = ({ usStockDetail }) => {
           onClick={changeDisplayToSector}
         />
       </div>
-      <Pie
+      <MemoizedPie
         pieData={displayMode === DISPLAY_MODE.ticker ? pieData : sectorData}
         themeColor={themeDefault}
         background="#343a40"

@@ -7,6 +7,9 @@ type Props = {
   usStockDetails: UsStockDetail[];
   selectedFx: string;
 };
+
+const MemoizedAssetPanel = React.memo(AssetPanel); // AssetPanelコンポーネントをメモ化
+
 const RankingComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
   // 値上がりTOP3
   const dataPriceRateDesc = useTickersSummary(
@@ -47,34 +50,40 @@ const RankingComponent: React.FC<Props> = ({ usStockDetails, selectedFx }) => {
   return (
     <>
       <h3 className="ml-3">値上がりTOP3</h3>
-      <AssetPanel assetDetails={dataPriceRateDesc} currency={selectedFx} />
+      <MemoizedAssetPanel
+        assetDetails={dataPriceRateDesc}
+        currency={selectedFx}
+      />
       <div className="clear-both"></div>
       <h3 className="ml-3">値下がりTOP3</h3>
-      <AssetPanel assetDetails={dataPriceRateAsc} currency={selectedFx} />
+      <MemoizedAssetPanel
+        assetDetails={dataPriceRateAsc}
+        currency={selectedFx}
+      />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み益（額）TOP3</h3>
-      <AssetPanel
+      <MemoizedAssetPanel
         assetDetails={dataBalanceDesc}
         currency={selectedFx}
         displayType="balance"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み損（額）TOP3</h3>
-      <AssetPanel
+      <MemoizedAssetPanel
         assetDetails={dataBalanceAsc}
         currency={selectedFx}
         displayType="balance"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み益（率）TOP3</h3>
-      <AssetPanel
+      <MemoizedAssetPanel
         assetDetails={dataBalanceRateDesc}
         currency={selectedFx}
         displayType="balanceRate"
       />
       <div className="clear-both"></div>
       <h3 className="ml-3">含み損（率）TOP3</h3>
-      <AssetPanel
+      <MemoizedAssetPanel
         assetDetails={dataBalanceRateAsc}
         currency={selectedFx}
         displayType="balanceRate"

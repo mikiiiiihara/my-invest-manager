@@ -14,7 +14,7 @@ const DISPLAY_MODE = {
   detail: "detail",
 };
 
-export const HomeMain: FC<Props> = ({
+const HomeMainComponent: FC<Props> = ({
   displayMode,
   usStockDetail,
   usStockSummary,
@@ -29,3 +29,5 @@ export const HomeMain: FC<Props> = ({
     </>
   );
 };
+HomeMainComponent.displayName = "HomeMain";
+export const HomeMain = React.memo(HomeMainComponent);

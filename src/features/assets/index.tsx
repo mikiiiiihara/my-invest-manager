@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { summarizeAllAssets } from "./logic/summarize-all-asset";
 import { Center } from "../../components/common/center/center";
 import { PrimaryButton } from "../../components/button/primary-button/primary-button";
@@ -27,7 +27,6 @@ const DISPLAY_MODE = {
 };
 
 const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
-  const [displayAssets, setDisplayAssets] = useState(assets);
   const [selectedGroups, setSelectedGroups] = useState<SelectedGroups>({
     usStock: true,
     japanFund: true,
@@ -46,7 +45,15 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     []
   );
   // 保有株式情報をグラフ用に加工
-  const usStockSummary = summarizeAllAssets(displayAssets, currentUsdJpy);
+  const usStockSummary = useMemo(
+    () =>
+      summarizeAllAssets(
+        assets.filter((asset) => selectedGroups[asset.group]),
+        currentUsdJpy
+      ),
+    [assets, currentUsdJpy, selectedGroups]
+  );
+
   const { usStockDetails, priceTotal, getPriceTotal, dividendTotal } =
     usStockSummary;
   const balanceTotal = Math.round((priceTotal - getPriceTotal) * 10) / 10;
@@ -63,14 +70,6 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     const { name, checked } = event.target;
     setSelectedGroups((prev) => ({ ...prev, [name]: checked }));
   }, []);
-
-  // チェックボックスの状態に基づいて assets をフィルタリング
-  useEffect(() => {
-    const filteredAssets = assets.filter(
-      (asset) => selectedGroups[asset.group]
-    );
-    setDisplayAssets(filteredAssets);
-  }, [selectedGroups, assets]);
   // チェックボックスのレンダリング
   const renderCheckboxes = () => (
     <div>

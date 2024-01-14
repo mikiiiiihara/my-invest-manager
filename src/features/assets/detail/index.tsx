@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { SearchAssets } from "./search-assets";
 import { Ranking } from "./ranking";
 import { PrimaryButton } from "../../../components/button/primary-button/primary-button";
@@ -23,9 +23,11 @@ const AssetDetailsComponent: React.FC<Props> = ({ usStockSummary }) => {
     setDisplayMode(DISPLAY_MODE.detail);
   }, []);
   // 一覧表示用の配列をTickerでアルファベット順にソート
-  const usStockDetails = [...usStockSummary.usStockDetails].sort((a, b) =>
-    a.code.localeCompare(b.code)
-  );
+  const usStockDetails = useMemo(() => {
+    return [...usStockSummary.usStockDetails].sort((a, b) =>
+      a.code.localeCompare(b.code)
+    );
+  }, [usStockSummary]);
 
   return (
     <>
