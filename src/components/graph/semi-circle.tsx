@@ -2,6 +2,7 @@ import React from "react";
 import { FC } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { ANIMATION_DURATION_TIME } from "./setting";
 
 type Props = {
   values: { name: string; value: number }[];
@@ -43,6 +44,9 @@ const SemiCircleComponent: FC<Props> = ({ values, themeColor, background }) => {
             fontWeight: "bold",
             color: "white",
           },
+        },
+        animation: {
+          duration: ANIMATION_DURATION_TIME,
         },
         startAngle: -90,
         endAngle: 90,

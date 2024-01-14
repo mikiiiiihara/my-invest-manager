@@ -3,6 +3,7 @@ import { FC } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { PieData } from "../../types/pie-data.type";
+import { ANIMATION_DURATION_TIME } from "./setting";
 
 type Props = {
   pieData: PieData[];
@@ -37,6 +38,9 @@ const PieComponent: FC<Props> = ({ pieData, themeColor, background }) => {
         allowPointSelect: false,
         cursor: "pointer",
         colors: themeColor,
+        animation: {
+          duration: ANIMATION_DURATION_TIME,
+        },
         dataLabels: {
           enabled: true,
           format: "<b>{point.name}</b><br>{point.percentage:.1f} %",

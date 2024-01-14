@@ -2,6 +2,7 @@ import React from "react";
 import { FC } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { ANIMATION_DURATION_TIME } from "./setting";
 type Props = {
   themeColor: string;
   background: string;
@@ -41,6 +42,9 @@ const StackedAreaComponent: FC<Props> = ({
     },
     plotOptions: {
       area: {
+        animation: {
+          duration: ANIMATION_DURATION_TIME,
+        },
         stacking: "normal",
         color: themeColor,
         lineColor: themeColor,
