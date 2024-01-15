@@ -41,7 +41,7 @@ const mockRefetch: (
   variables?: Partial<{
     day: number;
   }>
-) => Promise<ApolloQueryResult<TotalAssetsQuery>> = (variables) => {
+) => Promise<ApolloQueryResult<TotalAssetsQuery>> = () => {
   // モックのrefetch関数を実装
   return Promise.resolve({
     data: mockTotalAssetsData,

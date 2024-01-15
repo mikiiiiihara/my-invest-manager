@@ -23,7 +23,7 @@ const CreateUsStockFormComponent: FC<Props> = ({ setShowModal }) => {
   const { register, handleSubmit, reset } = useForm<CreateUsStock>();
   const client = useApolloClient();
   const [createUsStock] = useCreateUsStockMutation({
-    update(cache, { data }) {
+    update(_cache, { data }) {
       const newUsStock = data?.createUsStock;
       if (!newUsStock) return;
 
