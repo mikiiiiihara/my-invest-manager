@@ -6,7 +6,7 @@ import { Empty } from "@/components/graph/empty";
 import { caluclateTotalAsset } from "./logic/calculate-total.asset";
 import { TotalAssetDetail } from "./detail";
 
-type Props = {
+export type Props = {
   totalAssets: TotalAsset[];
   refetch: (
     variables?:
