@@ -1,11 +1,6 @@
 import React, { FC } from "react";
 import { CreateUsStockForm } from "./us-stock";
 
-const DISPLAY_MODE = {
-  ticker: "ticker",
-  sector: "sector",
-};
-
 type Props = {
   setShowModal: Function;
 };
