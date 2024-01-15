@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
+import React, { FC, useCallback, useMemo, useState } from "react";
 import { summarizeAllAssets } from "./logic/summarize-all-asset";
 import { Center } from "../../components/common/center/center";
 import { PrimaryButton } from "../../components/button/primary-button/primary-button";
@@ -8,7 +8,7 @@ import { Asset } from "./logic/calculate-all-assets";
 import { Modal } from "@/components/modal/modal";
 import { CreateForm } from "./forms/create";
 
-type Props = {
+export type Props = {
   assets: Asset[];
   currentUsdJpy: number;
 };
