@@ -47,7 +47,7 @@ export const Default: StoryObj<Props> = {
   },
 };
 
-export const 資産が登録されていない: StoryObj<Props> = {
+export const NotOwnedAssets: StoryObj<Props> = {
   args: {
     assets: [],
     currentUsdJpy: 140, // USD/JPYの適当なレート

@@ -83,7 +83,7 @@ const mockTotalAssetsOnlyStock: TotalAsset[] = [
 ];
 
 // 仮想通貨、固定利回り資産は画面表示されない
-export const 株式と日本円のみ保有している: StoryObj<Props> = {
+export const OnlyOwnedStockAndJpy: StoryObj<Props> = {
   args: {
     totalAssets: mockTotalAssetsOnlyStock,
     refetch: mockRefetch,
@@ -91,7 +91,7 @@ export const 株式と日本円のみ保有している: StoryObj<Props> = {
   },
 };
 
-export const 資産が登録されていない: StoryObj<Props> = {
+export const NotOwnedAssets: StoryObj<Props> = {
   args: {
     totalAssets: [],
     refetch: mockRefetch,

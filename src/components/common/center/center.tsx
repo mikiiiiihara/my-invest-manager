@@ -4,6 +4,8 @@ type Props = {
   children: ReactNode;
 };
 
-export const Center: React.FC<Props> = ({ children }) => {
+const CenterComponent: React.FC<Props> = ({ children }) => {
   return <div style={{ textAlign: "center" }}>{children}</div>;
 };
+CenterComponent.displayName = "Center";
+export const Center = React.memo(CenterComponent);

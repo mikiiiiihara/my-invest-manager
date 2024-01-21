@@ -68,7 +68,6 @@ const CreateUsStockFormComponent: FC<Props> = ({ setShowModal }) => {
   );
   return (
     <form onSubmit={onSubmit}>
-      <h3>米国株を追加</h3>
       <FormGroup>
         <label htmlFor="code">ティッカーシンボル</label>
         <input
