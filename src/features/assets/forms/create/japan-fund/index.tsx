@@ -20,7 +20,7 @@ type Props = {
 const CreateJapanFundFormComponent: FC<Props> = ({ setShowModal }) => {
   const { register, handleSubmit, reset } = useForm<CreateJapanFund>();
   const client = useApolloClient();
-  const [createUsStock] = useCreateJapanFundMutation({
+  const [createJapanFund] = useCreateJapanFundMutation({
     update(_cache, { data }) {
       const newJapanFund = data?.createJapanFund;
       if (!newJapanFund) return;
@@ -47,7 +47,7 @@ const CreateJapanFundFormComponent: FC<Props> = ({ setShowModal }) => {
     const myFund = JAPAN_FUND_LIST.filter((item) => item?.code == code);
     const name = myFund[0]?.name ?? "";
     try {
-      await createUsStock({
+      await createJapanFund({
         variables: {
           input: {
             code,
