@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import { CreateUsStockForm } from "./us-stock";
 import { CreateJapanFundForm } from "./japan-fund";
 import { CreateFixedIncomeAssetForm } from "./fixed-income-asset";
+import { CreateCryptoForm } from "./crypto";
 
 type Props = {
   setShowModal: Function;
@@ -11,6 +12,7 @@ const DISPLAY_MODE = {
   usStock: "米国株",
   japanFund: "日本投資信託",
   fixedIncomeAsset: "固定利回り資産",
+  crypto: "暗号通貨",
 };
 
 const contents = (displayMode: string, setShowModal: Function) => {
@@ -19,6 +21,8 @@ const contents = (displayMode: string, setShowModal: Function) => {
       return <CreateUsStockForm setShowModal={setShowModal} />;
     case DISPLAY_MODE.fixedIncomeAsset:
       return <CreateFixedIncomeAssetForm setShowModal={setShowModal} />;
+    case DISPLAY_MODE.crypto:
+      return <CreateCryptoForm setShowModal={setShowModal} />;
     default:
       return <CreateJapanFundForm setShowModal={setShowModal} />;
   }
@@ -45,6 +49,9 @@ const CreateFormComponent: FC<Props> = ({ setShowModal }) => {
         </option>
         <option key={DISPLAY_MODE.japanFund} value={DISPLAY_MODE.japanFund}>
           {DISPLAY_MODE.japanFund}
+        </option>
+        <option key={DISPLAY_MODE.crypto} value={DISPLAY_MODE.crypto}>
+          {DISPLAY_MODE.crypto}
         </option>
         <option
           key={DISPLAY_MODE.fixedIncomeAsset}
