@@ -1,0 +1,15 @@
+mutation DeleteUsStock($id: ID!) {
+  deleteUsStock(id: $id)
+}
+
+mutation DeleteJapanFund($id: ID!) {
+  deleteJapanFund(id: $id)
+}
+
+mutation DeleteCrypto($id: ID!) {
+  deleteCrypto(id: $id)
+}
+
+mutation DeleteFixedIncomeAsset($id: ID!) {
+  deleteFixedIncomeAsset(id: $id)
+}
