@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { Exact, TotalAsset, TotalAssetsQuery } from "@/gql/graphql";
 import { ApolloQueryResult } from "@apollo/client";
 import { StackedArea } from "@/components/graph/stacked-area";
@@ -11,6 +11,8 @@ import {
   formatDate,
 } from "../logic/calculate-total.asset";
 import { PrimaryButton } from "@/components/button/primary-button/primary-button";
+import { Modal } from "@/components/modal/modal";
+import { UpdateTotalAssetForm } from "../form";
 
 type Props = {
   totalAssets: TotalAsset[];
@@ -31,6 +33,8 @@ const TotalAssetsDetailComponent: FC<Props> = ({
   refetch,
   currentUsdJpy,
 }) => {
+  const [showUpdModal, setUpdModal] = useState(false);
+  const ShowUpdModal = useCallback(() => setUpdModal(true), []);
   const latestTotalAsset = totalAssets[totalAssets.length - 1];
   // 一番古い資産の総額を取得
   const prevTotalAssetPrice = caluclateTotalAsset(
@@ -79,6 +83,11 @@ const TotalAssetsDetailComponent: FC<Props> = ({
         background="#343a40"
       />
       <h1 className="mb-2">資産割合</h1>
+      <PrimaryButton
+        content="情報を更新"
+        onClick={ShowUpdModal}
+        isForContent={true}
+      />
       <h3>アセット別</h3>
       <SemiCircle
         values={amountsByAsset}
@@ -90,6 +99,16 @@ const TotalAssetsDetailComponent: FC<Props> = ({
         values={amountsByCurrency}
         themeColor={themeForest}
         background="#343a40"
+      />
+      <Modal
+        showFlag={showUpdModal}
+        setShowModal={setUpdModal}
+        content={
+          <UpdateTotalAssetForm
+            latestTotalAsset={latestTotalAsset}
+            setShowModal={setUpdModal}
+          />
+        }
       />
     </>
   );

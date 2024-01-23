@@ -1,0 +1,12 @@
+mutation UpdateTotalAsset($input: UpdateTotalAssetInput!) {
+  updateTotalAsset(input: $input) {
+    id
+    cashJpy
+    cashUsd
+    stock
+    fund
+    crypto
+    fixedIncomeAsset
+    createdAt
+  }
+}

@@ -135,6 +135,7 @@ export type Mutation = {
   deleteFixedIncomeAsset: Scalars['Boolean']['output'];
   deleteJapanFund: Scalars['Boolean']['output'];
   deleteUsStock: Scalars['Boolean']['output'];
+  updateTotalAsset: TotalAsset;
 };
 
 
@@ -182,6 +183,11 @@ export type MutationDeleteUsStockArgs = {
   id: Scalars['ID']['input'];
 };
 
+
+export type MutationUpdateTotalAssetArgs = {
+  input: UpdateTotalAssetInput;
+};
+
 export type Query = {
   __typename?: 'Query';
   cryptos?: Maybe<Array<Crypto>>;
@@ -221,6 +227,14 @@ export type TotalAsset = {
   id: Scalars['ID']['output'];
   /** 保有株式 */
   stock: Scalars['Float']['output'];
+};
+
+export type UpdateTotalAssetInput = {
+  /** 保有円 */
+  cashJpy: Scalars['Float']['input'];
+  /** 保有ドル */
+  cashUsd: Scalars['Float']['input'];
+  id: Scalars['ID']['input'];
 };
 
 export type UpdateUsStockInput = {
@@ -326,6 +340,13 @@ export type DeleteFixedIncomeAssetMutationVariables = Exact<{
 
 
 export type DeleteFixedIncomeAssetMutation = { __typename?: 'Mutation', deleteFixedIncomeAsset: boolean };
+
+export type UpdateTotalAssetMutationVariables = Exact<{
+  input: UpdateTotalAssetInput;
+}>;
+
+
+export type UpdateTotalAssetMutation = { __typename?: 'Mutation', updateTotalAsset: { __typename?: 'TotalAsset', id: string, cashJpy: number, cashUsd: number, stock: number, fund: number, crypto: number, fixedIncomeAsset: number, createdAt: any } };
 
 export type UsStocksQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -644,6 +665,46 @@ export function useDeleteFixedIncomeAssetMutation(baseOptions?: Apollo.MutationH
 export type DeleteFixedIncomeAssetMutationHookResult = ReturnType<typeof useDeleteFixedIncomeAssetMutation>;
 export type DeleteFixedIncomeAssetMutationResult = Apollo.MutationResult<DeleteFixedIncomeAssetMutation>;
 export type DeleteFixedIncomeAssetMutationOptions = Apollo.BaseMutationOptions<DeleteFixedIncomeAssetMutation, DeleteFixedIncomeAssetMutationVariables>;
+export const UpdateTotalAssetDocument = gql`
+    mutation UpdateTotalAsset($input: UpdateTotalAssetInput!) {
+  updateTotalAsset(input: $input) {
+    id
+    cashJpy
+    cashUsd
+    stock
+    fund
+    crypto
+    fixedIncomeAsset
+    createdAt
+  }
+}
+    `;
+export type UpdateTotalAssetMutationFn = Apollo.MutationFunction<UpdateTotalAssetMutation, UpdateTotalAssetMutationVariables>;
+
+/**
+ * __useUpdateTotalAssetMutation__
+ *
+ * To run a mutation, you first call `useUpdateTotalAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTotalAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTotalAssetMutation, { data, loading, error }] = useUpdateTotalAssetMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateTotalAssetMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTotalAssetMutation, UpdateTotalAssetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateTotalAssetMutation, UpdateTotalAssetMutationVariables>(UpdateTotalAssetDocument, options);
+      }
+export type UpdateTotalAssetMutationHookResult = ReturnType<typeof useUpdateTotalAssetMutation>;
+export type UpdateTotalAssetMutationResult = Apollo.MutationResult<UpdateTotalAssetMutation>;
+export type UpdateTotalAssetMutationOptions = Apollo.BaseMutationOptions<UpdateTotalAssetMutation, UpdateTotalAssetMutationVariables>;
 export const UsStocksDocument = gql`
     query usStocks {
   usStocks {
