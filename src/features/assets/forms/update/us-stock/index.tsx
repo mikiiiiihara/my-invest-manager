@@ -2,11 +2,7 @@ import { DangerButton } from "@/components/button/danger-button/danger-button";
 import { PrimaryButton } from "@/components/button/primary-button/primary-button";
 import { FormGroup } from "@/components/forms/form-group";
 import { Asset } from "@/features/assets/logic/calculate-all-assets";
-import {
-  UsStocksDocument,
-  useCreateUsStockMutation,
-  useDeleteUsStockMutation,
-} from "@/gql/graphql";
+import { UsStocksDocument, useDeleteUsStockMutation } from "@/gql/graphql";
 import { useApolloClient } from "@apollo/client";
 import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
