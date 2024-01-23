@@ -7,6 +7,7 @@ import { Empty } from "../../components/graph/empty";
 import { Asset } from "./logic/calculate-all-assets";
 import { Modal } from "@/components/modal/modal";
 import { CreateForm } from "./forms/create";
+import { UpdateForm } from "./forms/update";
 
 export type Props = {
   assets: Asset[];
@@ -35,6 +36,8 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
   });
   const [showAddModal, setAddModal] = useState(false);
   const ShowAddModal = useCallback(() => setAddModal(true), []);
+  const [showUpdModal, setUpdModal] = useState(false);
+  const ShowUpdModal = useCallback(() => setUpdModal(true), []);
   const [displayMode, setDisplayMode] = useState(DISPLAY_MODE.summary);
   const changeDisplayToSummary = useCallback(
     () => setDisplayMode(DISPLAY_MODE.summary),
@@ -121,9 +124,19 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
         )}
       </div>
       <PrimaryButton
+        content="情報を更新"
+        onClick={ShowUpdModal}
+        isForContent={true}
+      />
+      <PrimaryButton
         content="銘柄を追加"
         onClick={ShowAddModal}
         isForContent={true}
+      />
+      <Modal
+        showFlag={showUpdModal}
+        setShowModal={setUpdModal}
+        content={<UpdateForm assets={assets} setShowModal={setUpdModal} />}
       />
       <Modal
         showFlag={showAddModal}
