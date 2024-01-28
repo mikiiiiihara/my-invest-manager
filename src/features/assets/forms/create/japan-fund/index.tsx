@@ -66,7 +66,7 @@ const CreateJapanFundFormComponent: FC<Props> = ({ setShowModal }) => {
   });
   return (
     <form onSubmit={onSubmit}>
-      <p className="mb-2">※三菱系ファンドのみ登録可能</p>
+      <p className="mb-2">※三菱「eMAXIS Slimシリーズ」のみ登録可能</p>
       <FormGroup>
         <label htmlFor="code">投資信託名</label>
         <select {...register("code")} className="form-control">
