@@ -1,6 +1,9 @@
 import React, { FC, useState } from "react";
 import { UpdateUsStockForm } from "./us-stock";
 import { Asset } from "../../logic/calculate-all-assets";
+import { UpdateJapanFundForm } from "./japan-fund";
+import { UpdateFixedIncomeAssetForm } from "./fixed-income-asset";
+import { UpdateCryptoForm } from "./crypto";
 
 type Props = {
   assets: Asset[];
@@ -22,12 +25,19 @@ const contents = (
   switch (displayMode) {
     case DISPLAY_MODE.usStock:
       return <UpdateUsStockForm assets={assets} setShowModal={setShowModal} />;
-    // case DISPLAY_MODE.fixedIncomeAsset:
-    //   return <CreateFixedIncomeAssetForm setShowModal={setShowModal} />;
-    // case DISPLAY_MODE.crypto:
-    //   return <CreateCryptoForm setShowModal={setShowModal} />;
+    case DISPLAY_MODE.fixedIncomeAsset:
+      return (
+        <UpdateFixedIncomeAssetForm
+          assets={assets}
+          setShowModal={setShowModal}
+        />
+      );
+    case DISPLAY_MODE.crypto:
+      return <UpdateCryptoForm assets={assets} setShowModal={setShowModal} />;
     default:
-      return <UpdateUsStockForm assets={assets} setShowModal={setShowModal} />;
+      return (
+        <UpdateJapanFundForm assets={assets} setShowModal={setShowModal} />
+      );
   }
 };
 
