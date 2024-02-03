@@ -1,5 +1,6 @@
 import { DangerButton } from "@/components/button/danger-button/danger-button";
 import { PrimaryButton } from "@/components/button/primary-button/primary-button";
+import { Loading } from "@/components/common/loading/loading";
 import { FormGroup } from "@/components/forms/form-group";
 import { Asset } from "@/features/assets/logic/calculate-all-assets";
 import {
@@ -35,7 +36,8 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
   const { register, handleSubmit, reset } = useForm<UpdateUsStock>();
   const client = useApolloClient();
   // 更新処理
-  const [updateUsStock] = useUpdateUsStockMutation();
+  const [updateUsStock, { loading: updateLoading }] =
+    useUpdateUsStockMutation();
 
   // 削除処理
   const [deleteUsStock] = useDeleteUsStockMutation({
@@ -104,6 +106,13 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
       console.error(error);
     }
   });
+
+  const submitLoading = () => {
+    if (updateLoading) {
+      return <Loading />;
+    }
+  };
+
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -139,7 +148,7 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
             type="number"
             step="any"
             className="form-control"
-            {...register("getPrice", { required: true })}
+            {...register("getPrice")}
             placeholder="例: 150.0"
             defaultValue={getPrice}
           />
@@ -150,7 +159,7 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
             type="number"
             step="any"
             className="form-control"
-            {...register("quantity", { required: true })}
+            {...register("quantity")}
             placeholder="例: 10"
             defaultValue={quantity}
           />
@@ -161,12 +170,13 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
             type="number"
             step="any"
             className="form-control"
-            {...register("usdJpy", { required: true })}
+            {...register("usdJpy")}
             placeholder="例: 110.0"
             defaultValue={usdJpy}
           />
         </FormGroup>
         <PrimaryButton content="更新" className="mb-3 w-100" type="submit" />
+        {submitLoading()}
       </form>
       <DangerButton
         content="この銘柄を全売却"

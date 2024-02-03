@@ -255,16 +255,16 @@ export type TotalAsset = {
 
 export type UpdateCryptoInput = {
   /** 取得価格 */
-  getPrice: Scalars['Float']['input'];
+  getPrice?: InputMaybe<Scalars['Float']['input']>;
   /** id */
   id: Scalars['ID']['input'];
   /** 保有株数 */
-  quantity: Scalars['Float']['input'];
+  quantity?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type UpdateFixedIncomeAssetInput = {
   /** 取得価格合計 */
-  getPriceTotal: Scalars['Float']['input'];
+  getPriceTotal?: InputMaybe<Scalars['Float']['input']>;
   /** id */
   id: Scalars['ID']['input'];
   /** 購入時為替 */
@@ -273,30 +273,30 @@ export type UpdateFixedIncomeAssetInput = {
 
 export type UpdateJapanFundInput = {
   /** 取得価格 */
-  getPrice: Scalars['Float']['input'];
+  getPrice?: InputMaybe<Scalars['Float']['input']>;
   /** 取得価格総額 */
-  getPriceTotal: Scalars['Float']['input'];
+  getPriceTotal?: InputMaybe<Scalars['Float']['input']>;
   /** id */
   id: Scalars['ID']['input'];
 };
 
 export type UpdateTotalAssetInput = {
   /** 保有円 */
-  cashJpy: Scalars['Float']['input'];
+  cashJpy?: InputMaybe<Scalars['Float']['input']>;
   /** 保有ドル */
-  cashUsd: Scalars['Float']['input'];
+  cashUsd?: InputMaybe<Scalars['Float']['input']>;
   id: Scalars['ID']['input'];
 };
 
 export type UpdateUsStockInput = {
   /** 取得価格 */
-  getPrice: Scalars['Float']['input'];
+  getPrice?: InputMaybe<Scalars['Float']['input']>;
   /** id */
   id: Scalars['ID']['input'];
   /** 保有株数 */
-  quantity: Scalars['Float']['input'];
+  quantity?: InputMaybe<Scalars['Float']['input']>;
   /** 購入時為替 */
-  usdJpy: Scalars['Float']['input'];
+  usdJpy?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type UsStock = {
