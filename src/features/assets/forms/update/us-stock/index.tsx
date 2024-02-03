@@ -87,7 +87,12 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
     }
   };
 
-  const onSubmit = handleSubmit(async ({ id, getPrice, quantity }) => {
+  const onSubmit = handleSubmit(async ({ id, getPrice, quantity, usdJpy }) => {
+    // 全部nullの場合、実行できない
+    if (getPrice.length == 0 && quantity.length == 0 && usdJpy.length == 0) {
+      toast.error(`更新する項目を入力してください`);
+      return;
+    }
     try {
       await updateUsStock({
         variables: {
