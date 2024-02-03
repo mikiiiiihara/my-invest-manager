@@ -2,7 +2,11 @@ import { DangerButton } from "@/components/button/danger-button/danger-button";
 import { PrimaryButton } from "@/components/button/primary-button/primary-button";
 import { FormGroup } from "@/components/forms/form-group";
 import { Asset } from "@/features/assets/logic/calculate-all-assets";
-import { UsStocksDocument, useDeleteUsStockMutation } from "@/gql/graphql";
+import {
+  UsStocksDocument,
+  useDeleteUsStockMutation,
+  useUpdateUsStockMutation,
+} from "@/gql/graphql";
 import { useApolloClient } from "@apollo/client";
 import React, { FC, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -30,28 +34,8 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
   const selectList = assets.filter((asset) => asset.group == "usStock");
   const { register, handleSubmit, reset } = useForm<UpdateUsStock>();
   const client = useApolloClient();
-  // 追加処理
-  //   const [createUsStock] = useCreateUsStockMutation({
-  //     update(_cache, { data }) {
-  //       const newUsStock = data?.createUsStock;
-  //       if (!newUsStock) return;
-
-  //       const existingUsStocksData = client.readQuery({
-  //         query: UsStocksDocument,
-  //       });
-
-  //       // 新しい株式を既存のリストに追加
-  //       const updatedUsStocks = existingUsStocksData
-  //         ? [newUsStock, ...existingUsStocksData.usStocks]
-  //         : [newUsStock];
-
-  //       // キャッシュを更新
-  //       client.writeQuery({
-  //         query: UsStocksDocument,
-  //         data: { usStocks: updatedUsStocks },
-  //       });
-  //     },
-  //   });
+  // 更新処理
+  const [updateUsStock] = useUpdateUsStockMutation();
 
   // 削除処理
   const [deleteUsStock] = useDeleteUsStockMutation({
@@ -102,25 +86,23 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
   };
 
   const onSubmit = handleSubmit(async ({ id, getPrice, quantity }) => {
-    console.log(id, getPrice, quantity);
-    // try {
-    //   await createUsStock({
-    //     variables: {
-    //       input: {
-    //         code,
-    //         getPrice: parseFloat(getPrice),
-    //         quantity: parseFloat(quantity),
-    //         sector,
-    //         usdJpy: parseFloat(usdJpy),
-    //       },
-    //     },
-    //   });
-    //   toast.success(`${code}を追加しました`);
-    //   reset(); // フォームのリセット
-    //   setShowModal(false);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      await updateUsStock({
+        variables: {
+          input: {
+            id,
+            getPrice: parseFloat(getPrice),
+            quantity: parseFloat(quantity),
+            usdJpy: parseFloat(usdJpy),
+          },
+        },
+      });
+      toast.success(`更新しました`);
+      reset(); // フォームのリセット
+      setShowModal(false);
+    } catch (error) {
+      console.error(error);
+    }
   });
   return (
     <>

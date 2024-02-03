@@ -1,0 +1,46 @@
+mutation UpdateUsStock($input: UpdateUsStockInput!) {
+  updateUsStock(input: $input) {
+    id
+    code
+    getPrice
+    dividend
+    quantity
+    sector
+    usdJpy
+    currentPrice
+    priceGets
+    currentRate
+  }
+}
+
+mutation UpdateCrypto($input: UpdateCryptoInput!) {
+  updateCrypto(input: $input) {
+    id
+    code
+    getPrice
+    quantity
+    currentPrice
+  }
+}
+
+mutation UpdateFixedIncomeAsset($input: UpdateFixedIncomeAssetInput!) {
+  updateFixedIncomeAsset(input: $input) {
+    id
+    code
+    getPriceTotal
+    dividendRate
+    usdJpy
+    paymentMonth
+  }
+}
+
+mutation UpdateJapanFund($input: UpdateJapanFundInput!) {
+  updateJapanFund(input: $input) {
+    id
+    code
+    name
+    getPrice
+    getPriceTotal
+    currentPrice
+  }
+}

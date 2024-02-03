@@ -135,7 +135,11 @@ export type Mutation = {
   deleteFixedIncomeAsset: Scalars['Boolean']['output'];
   deleteJapanFund: Scalars['Boolean']['output'];
   deleteUsStock: Scalars['Boolean']['output'];
+  updateCrypto: Crypto;
+  updateFixedIncomeAsset: FixedIncomeAsset;
+  updateJapanFund: JapanFund;
   updateTotalAsset: TotalAsset;
+  updateUsStock: UsStock;
 };
 
 
@@ -184,8 +188,28 @@ export type MutationDeleteUsStockArgs = {
 };
 
 
+export type MutationUpdateCryptoArgs = {
+  input: UpdateCryptoInput;
+};
+
+
+export type MutationUpdateFixedIncomeAssetArgs = {
+  input: UpdateFixedIncomeAssetInput;
+};
+
+
+export type MutationUpdateJapanFundArgs = {
+  input: UpdateJapanFundInput;
+};
+
+
 export type MutationUpdateTotalAssetArgs = {
   input: UpdateTotalAssetInput;
+};
+
+
+export type MutationUpdateUsStockArgs = {
+  input: UpdateUsStockInput;
 };
 
 export type Query = {
@@ -229,6 +253,33 @@ export type TotalAsset = {
   stock: Scalars['Float']['output'];
 };
 
+export type UpdateCryptoInput = {
+  /** 取得価格 */
+  getPrice: Scalars['Float']['input'];
+  /** id */
+  id: Scalars['ID']['input'];
+  /** 保有株数 */
+  quantity: Scalars['Float']['input'];
+};
+
+export type UpdateFixedIncomeAssetInput = {
+  /** 取得価格合計 */
+  getPriceTotal: Scalars['Float']['input'];
+  /** id */
+  id: Scalars['ID']['input'];
+  /** 購入時為替 */
+  usdJpy?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type UpdateJapanFundInput = {
+  /** 取得価格 */
+  getPrice: Scalars['Float']['input'];
+  /** 取得価格総額 */
+  getPriceTotal: Scalars['Float']['input'];
+  /** id */
+  id: Scalars['ID']['input'];
+};
+
 export type UpdateTotalAssetInput = {
   /** 保有円 */
   cashJpy: Scalars['Float']['input'];
@@ -238,16 +289,10 @@ export type UpdateTotalAssetInput = {
 };
 
 export type UpdateUsStockInput = {
-  /** 現在価格 */
-  currentPrice: Scalars['Float']['input'];
-  /** 変化率 */
-  currentRate: Scalars['Float']['input'];
   /** 取得価格 */
   getPrice: Scalars['Float']['input'];
   /** id */
   id: Scalars['ID']['input'];
-  /** 変化額 */
-  priceGets: Scalars['Float']['input'];
   /** 保有株数 */
   quantity: Scalars['Float']['input'];
   /** 購入時為替 */
@@ -340,6 +385,34 @@ export type DeleteFixedIncomeAssetMutationVariables = Exact<{
 
 
 export type DeleteFixedIncomeAssetMutation = { __typename?: 'Mutation', deleteFixedIncomeAsset: boolean };
+
+export type UpdateUsStockMutationVariables = Exact<{
+  input: UpdateUsStockInput;
+}>;
+
+
+export type UpdateUsStockMutation = { __typename?: 'Mutation', updateUsStock: { __typename?: 'UsStock', id: string, code: string, getPrice: number, dividend: number, quantity: number, sector: string, usdJpy: number, currentPrice: number, priceGets: number, currentRate: number } };
+
+export type UpdateCryptoMutationVariables = Exact<{
+  input: UpdateCryptoInput;
+}>;
+
+
+export type UpdateCryptoMutation = { __typename?: 'Mutation', updateCrypto: { __typename?: 'Crypto', id: string, code: string, getPrice: number, quantity: number, currentPrice: number } };
+
+export type UpdateFixedIncomeAssetMutationVariables = Exact<{
+  input: UpdateFixedIncomeAssetInput;
+}>;
+
+
+export type UpdateFixedIncomeAssetMutation = { __typename?: 'Mutation', updateFixedIncomeAsset: { __typename?: 'FixedIncomeAsset', id: string, code: string, getPriceTotal: number, dividendRate: number, usdJpy?: number | null, paymentMonth: Array<number> } };
+
+export type UpdateJapanFundMutationVariables = Exact<{
+  input: UpdateJapanFundInput;
+}>;
+
+
+export type UpdateJapanFundMutation = { __typename?: 'Mutation', updateJapanFund: { __typename?: 'JapanFund', id: string, code: string, name: string, getPrice: number, getPriceTotal: number, currentPrice: number } };
 
 export type UpdateTotalAssetMutationVariables = Exact<{
   input: UpdateTotalAssetInput;
@@ -665,6 +738,161 @@ export function useDeleteFixedIncomeAssetMutation(baseOptions?: Apollo.MutationH
 export type DeleteFixedIncomeAssetMutationHookResult = ReturnType<typeof useDeleteFixedIncomeAssetMutation>;
 export type DeleteFixedIncomeAssetMutationResult = Apollo.MutationResult<DeleteFixedIncomeAssetMutation>;
 export type DeleteFixedIncomeAssetMutationOptions = Apollo.BaseMutationOptions<DeleteFixedIncomeAssetMutation, DeleteFixedIncomeAssetMutationVariables>;
+export const UpdateUsStockDocument = gql`
+    mutation UpdateUsStock($input: UpdateUsStockInput!) {
+  updateUsStock(input: $input) {
+    id
+    code
+    getPrice
+    dividend
+    quantity
+    sector
+    usdJpy
+    currentPrice
+    priceGets
+    currentRate
+  }
+}
+    `;
+export type UpdateUsStockMutationFn = Apollo.MutationFunction<UpdateUsStockMutation, UpdateUsStockMutationVariables>;
+
+/**
+ * __useUpdateUsStockMutation__
+ *
+ * To run a mutation, you first call `useUpdateUsStockMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateUsStockMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateUsStockMutation, { data, loading, error }] = useUpdateUsStockMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateUsStockMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUsStockMutation, UpdateUsStockMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateUsStockMutation, UpdateUsStockMutationVariables>(UpdateUsStockDocument, options);
+      }
+export type UpdateUsStockMutationHookResult = ReturnType<typeof useUpdateUsStockMutation>;
+export type UpdateUsStockMutationResult = Apollo.MutationResult<UpdateUsStockMutation>;
+export type UpdateUsStockMutationOptions = Apollo.BaseMutationOptions<UpdateUsStockMutation, UpdateUsStockMutationVariables>;
+export const UpdateCryptoDocument = gql`
+    mutation UpdateCrypto($input: UpdateCryptoInput!) {
+  updateCrypto(input: $input) {
+    id
+    code
+    getPrice
+    quantity
+    currentPrice
+  }
+}
+    `;
+export type UpdateCryptoMutationFn = Apollo.MutationFunction<UpdateCryptoMutation, UpdateCryptoMutationVariables>;
+
+/**
+ * __useUpdateCryptoMutation__
+ *
+ * To run a mutation, you first call `useUpdateCryptoMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateCryptoMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateCryptoMutation, { data, loading, error }] = useUpdateCryptoMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateCryptoMutation(baseOptions?: Apollo.MutationHookOptions<UpdateCryptoMutation, UpdateCryptoMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateCryptoMutation, UpdateCryptoMutationVariables>(UpdateCryptoDocument, options);
+      }
+export type UpdateCryptoMutationHookResult = ReturnType<typeof useUpdateCryptoMutation>;
+export type UpdateCryptoMutationResult = Apollo.MutationResult<UpdateCryptoMutation>;
+export type UpdateCryptoMutationOptions = Apollo.BaseMutationOptions<UpdateCryptoMutation, UpdateCryptoMutationVariables>;
+export const UpdateFixedIncomeAssetDocument = gql`
+    mutation UpdateFixedIncomeAsset($input: UpdateFixedIncomeAssetInput!) {
+  updateFixedIncomeAsset(input: $input) {
+    id
+    code
+    getPriceTotal
+    dividendRate
+    usdJpy
+    paymentMonth
+  }
+}
+    `;
+export type UpdateFixedIncomeAssetMutationFn = Apollo.MutationFunction<UpdateFixedIncomeAssetMutation, UpdateFixedIncomeAssetMutationVariables>;
+
+/**
+ * __useUpdateFixedIncomeAssetMutation__
+ *
+ * To run a mutation, you first call `useUpdateFixedIncomeAssetMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateFixedIncomeAssetMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateFixedIncomeAssetMutation, { data, loading, error }] = useUpdateFixedIncomeAssetMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateFixedIncomeAssetMutation(baseOptions?: Apollo.MutationHookOptions<UpdateFixedIncomeAssetMutation, UpdateFixedIncomeAssetMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateFixedIncomeAssetMutation, UpdateFixedIncomeAssetMutationVariables>(UpdateFixedIncomeAssetDocument, options);
+      }
+export type UpdateFixedIncomeAssetMutationHookResult = ReturnType<typeof useUpdateFixedIncomeAssetMutation>;
+export type UpdateFixedIncomeAssetMutationResult = Apollo.MutationResult<UpdateFixedIncomeAssetMutation>;
+export type UpdateFixedIncomeAssetMutationOptions = Apollo.BaseMutationOptions<UpdateFixedIncomeAssetMutation, UpdateFixedIncomeAssetMutationVariables>;
+export const UpdateJapanFundDocument = gql`
+    mutation UpdateJapanFund($input: UpdateJapanFundInput!) {
+  updateJapanFund(input: $input) {
+    id
+    code
+    name
+    getPrice
+    getPriceTotal
+    currentPrice
+  }
+}
+    `;
+export type UpdateJapanFundMutationFn = Apollo.MutationFunction<UpdateJapanFundMutation, UpdateJapanFundMutationVariables>;
+
+/**
+ * __useUpdateJapanFundMutation__
+ *
+ * To run a mutation, you first call `useUpdateJapanFundMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateJapanFundMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateJapanFundMutation, { data, loading, error }] = useUpdateJapanFundMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useUpdateJapanFundMutation(baseOptions?: Apollo.MutationHookOptions<UpdateJapanFundMutation, UpdateJapanFundMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateJapanFundMutation, UpdateJapanFundMutationVariables>(UpdateJapanFundDocument, options);
+      }
+export type UpdateJapanFundMutationHookResult = ReturnType<typeof useUpdateJapanFundMutation>;
+export type UpdateJapanFundMutationResult = Apollo.MutationResult<UpdateJapanFundMutation>;
+export type UpdateJapanFundMutationOptions = Apollo.BaseMutationOptions<UpdateJapanFundMutation, UpdateJapanFundMutationVariables>;
 export const UpdateTotalAssetDocument = gql`
     mutation UpdateTotalAsset($input: UpdateTotalAssetInput!) {
   updateTotalAsset(input: $input) {
