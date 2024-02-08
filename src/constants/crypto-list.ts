@@ -1,6 +1,7 @@
 export const CRYPTO_LIST = [
   "xrp",
   "ltc",
+  "btc",
   "eth",
   "mona",
   "bcc",
