@@ -74,21 +74,30 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     setSelectedGroups((prev) => ({ ...prev, [name]: checked }));
   }, []);
   // チェックボックスのレンダリング
-  const renderCheckboxes = () => (
-    <div>
-      {Object.entries(selectedGroups).map(([group, isSelected]) => (
-        <label key={group}>
-          <input
-            type="checkbox"
-            name={group}
-            checked={isSelected}
-            onChange={handleCheckboxChange}
-          />
-          {group}
-        </label>
-      ))}
-    </div>
-  );
+  const renderCheckboxes = () => {
+    const groupJapaneseName: { [key: string]: string } = {
+      usStock: "米国株",
+      japanFund: "日本投資信託",
+      crypto: "仮想通貨",
+      fixedIncomeAsset: "固定利回り資産",
+    };
+
+    return (
+      <div>
+        {Object.entries(selectedGroups).map(([group, isSelected]) => (
+          <label key={group}>
+            <input
+              type="checkbox"
+              name={group}
+              checked={isSelected}
+              onChange={handleCheckboxChange}
+            />
+            {groupJapaneseName[group]}
+          </label>
+        ))}
+      </div>
+    );
+  };
   return (
     <Center>
       <div className="content">
