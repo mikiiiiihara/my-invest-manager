@@ -66,14 +66,22 @@ const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
               </div>
               <p className={styles.modalText}>セクター：{data.sector}</p>
               <p className={styles.modalText}>保有株数：{data.quantity}</p>
-              <p className={styles.modalText}>
-                取得価格：¥
-                {(Math.round(data.getPrice * 10) / 10).toLocaleString()}
-              </p>
-              <p className={styles.modalText}>
-                取得為替：¥
-                {data.usdJpy.toLocaleString()}
-              </p>
+              {data.getPrice ? (
+                <p className={styles.modalText}>
+                  取得価格：¥
+                  {(Math.round(data.getPrice * 10) / 10).toLocaleString()}
+                </p>
+              ) : (
+                <></>
+              )}
+              {data.usdJpy !== 1 ? (
+                <p className={styles.modalText}>
+                  取得為替：¥
+                  {data.usdJpy.toLocaleString()}
+                </p>
+              ) : (
+                <></>
+              )}
               <p className={styles.modalText}>
                 時価総額：¥
                 {data.sumOfPrice.toLocaleString()}
@@ -89,7 +97,7 @@ const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
                 {data.sumOfDividend.toLocaleString()}
               </p>
               <p className={styles.modalText}>
-                配当利回り：{data.dividendRate}%
+                配当利回り：{Math.round(data.dividendRate * 100) / 100}%
               </p>
             </div>
           </div>

@@ -62,7 +62,10 @@ export const caluculateAmountByAsset = (
     });
   if (crypto != 0) amountByAssets.push({ name: "仮想通貨", value: crypto });
   if (stockAndFund != 0)
-    amountByAssets.push({ name: "株・投信", value: stockAndFund });
+    amountByAssets.push({
+      name: "株・投信",
+      value: Math.round(stockAndFund * 10) / 10,
+    });
   return amountByAssets;
 };
 

@@ -23,4 +23,8 @@ export const sectorList = [
   { id: 22, name: "other" },
   { id: 23, name: "Aerospace & Defence" },
   { id: 24, name: "retail" },
+  { id: 25, name: "travel" },
+  { id: 26, name: "semiconductor" },
+  { id: 27, name: "education" },
+  { id: 28, name: "food" },
 ];
