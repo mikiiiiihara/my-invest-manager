@@ -48,14 +48,24 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
     []
   );
   // 保有株式情報をグラフ用に加工
-  const usStockSummary = useMemo(
-    () =>
-      summarizeAllAssets(
-        assets.filter((asset) => selectedGroups[asset.group]),
-        currentUsdJpy
-      ),
-    [assets, currentUsdJpy, selectedGroups]
-  );
+  const usStockSummary = useMemo(() => {
+    const isUsStockOnly =
+      selectedGroups.usStock &&
+      !selectedGroups.japanFund &&
+      !selectedGroups.crypto &&
+      !selectedGroups.fixedIncomeAsset;
+
+    const filteredAssets = assets
+      .filter((asset) => selectedGroups[asset.group])
+      // usStockのみ選択されている場合はsectorをそのまま使用、それ以外はusStockに変更
+      .map((asset) => ({
+        ...asset,
+        sector:
+          isUsStockOnly || asset.group != "usStock" ? asset.sector : "usStock",
+      }));
+    console.log(filteredAssets);
+    return summarizeAllAssets(filteredAssets, currentUsdJpy);
+  }, [assets, currentUsdJpy, selectedGroups]);
 
   const { usStockDetails, priceTotal, getPriceTotal, dividendTotal } =
     usStockSummary;

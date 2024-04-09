@@ -42,7 +42,7 @@ export const CaluculateAllAssets = (allAssets: AllAssets) => {
       getPriceTotal: usStock.getPrice,
       priceGets: usStock.priceGets,
       quantity: usStock.quantity,
-      sector: "usStock",
+      sector: usStock.sector,
       usdJpy: usStock.usdJpy,
       group: "usStock",
     };
