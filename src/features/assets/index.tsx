@@ -63,7 +63,6 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
         sector:
           isUsStockOnly || asset.group != "usStock" ? asset.sector : "usStock",
       }));
-    console.log(filteredAssets);
     return summarizeAllAssets(filteredAssets, currentUsdJpy);
   }, [assets, currentUsdJpy, selectedGroups]);
 
