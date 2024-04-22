@@ -39,10 +39,18 @@ const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
     <div className={styles.tickerPanelItem}>
       <div className={styles.tickerPanelItemContent} onClick={changeModal}>
         <h3>{data.code}</h3>
-        <p>¥{(Math.round(data.price * 10) / 10).toLocaleString()}</p>
+        <p>¥{(Math.round(data.sumOfPrice * 10) / 10).toLocaleString()}</p>
         <p className={rate > 0 ? "text-success" : "text-danger"}>
-          {rate}
-          {displayType == "balance" ? "" : "%"}
+          {data.sector !== "japanFund" &&
+          data.sector !== "crypto" &&
+          data.sector !== "fixedIncomeAsset" ? (
+            <>
+              {rate}
+              {displayType == "balance" ? "" : "%"}
+            </>
+          ) : (
+            <></>
+          )}
         </p>
       </div>
       <div className={styles.tickerPanelItemModal}>
@@ -51,21 +59,35 @@ const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
             <div className={styles.tickerModalContent}>
               <div className={styles.baseInfo}>
                 <p className={styles.tickerName}>{data.code}</p>
-                <div>
-                  <p className={styles.tickerName}>
-                    ¥{(Math.round(data.price * 10) / 10).toLocaleString()}
-                  </p>
-                </div>
+                {data.sector !== "fixedIncomeAsset" ? (
+                  <div>
+                    <p className={styles.tickerName}>
+                      ¥{(Math.round(data.price * 10) / 10).toLocaleString()}
+                    </p>
+                  </div>
+                ) : (
+                  <></>
+                )}
               </div>
               <div className={`${styles.baseInfo} mb-3 ${styles.baseInfoRate}`}>
                 <p></p>
-                <p className={rate > 0 ? "text-success" : "text-danger"}>
-                  {rate}
-                  {displayType == "balance" ? "" : "%"}
-                </p>
+                {data.sector !== "japanFund" &&
+                data.sector !== "crypto" &&
+                data.sector !== "fixedIncomeAsset" ? (
+                  <p className={rate > 0 ? "text-success" : "text-danger"}>
+                    {rate}
+                    {displayType == "balance" ? "" : "%"}
+                  </p>
+                ) : (
+                  <></>
+                )}
               </div>
               <p className={styles.modalText}>セクター：{data.sector}</p>
-              <p className={styles.modalText}>保有株数：{data.quantity}</p>
+              {data.sector !== "japanFund" && data.sector !== "crypto" ? (
+                <p className={styles.modalText}>保有株数：{data.quantity}</p>
+              ) : (
+                <></>
+              )}
               {data.getPrice ? (
                 <p className={styles.modalText}>
                   取得価格：¥
@@ -92,13 +114,19 @@ const AssetPanelItemComponent: FC<Props> = ({ data, displayType }) => {
                   ¥{balance.toLocaleString()}（{data.balanceRate}%）
                 </span>
               </p>
-              <p className={styles.modalText}>
-                年配当総額：¥
-                {data.sumOfDividend.toLocaleString()}
-              </p>
-              <p className={styles.modalText}>
-                配当利回り：{Math.round(data.dividendRate * 100) / 100}%
-              </p>
+              {data.sector !== "japanFund" && data.sector !== "crypto" ? (
+                <>
+                  <p className={styles.modalText}>
+                    年配当総額：¥
+                    {data.sumOfDividend.toLocaleString()}
+                  </p>
+                  <p className={styles.modalText}>
+                    配当利回り：{Math.round(data.dividendRate * 100) / 100}%
+                  </p>
+                </>
+              ) : (
+                <> </>
+              )}
             </div>
           </div>
         ) : (

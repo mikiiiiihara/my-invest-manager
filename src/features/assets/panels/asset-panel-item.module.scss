@@ -1,17 +1,16 @@
 .tickerPanelItem {
   .tickerPanelItemContent {
     display: block;
-    float: left;
-    width: 44.6%;
+    width: 94%;
     margin: 2%;
     text-align: left;
     padding: 1rem;
     background-color: #343a40;
     border: 1.5px solid #4d4d4d;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
     > h3 {
-      font-size: 160%;
+      font-size: 120%;
     }
   }
   .tickerModal {
@@ -30,7 +29,7 @@
     width: 90%;
     height: auto;
     margin: auto;
-    padding: 1.6rem;
+    padding: 1.4rem;
     text-align: left;
     background-color: #343a40;
     border: 1.5px solid #4d4d4d;
@@ -45,7 +44,7 @@
     }
   }
   .tickerName {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
   .baseInfoRate p,
   .modalText {
