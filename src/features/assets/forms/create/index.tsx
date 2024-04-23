@@ -3,16 +3,10 @@ import { CreateUsStockForm } from "./us-stock";
 import { CreateJapanFundForm } from "./japan-fund";
 import { CreateFixedIncomeAssetForm } from "./fixed-income-asset";
 import { CreateCryptoForm } from "./crypto";
+import { DISPLAY_MODE } from "@/constants/display-mode";
 
 type Props = {
   setShowModal: Function;
-};
-
-const DISPLAY_MODE = {
-  usStock: "米国株",
-  japanFund: "日本投資信託",
-  fixedIncomeAsset: "固定利回り資産",
-  crypto: "暗号通貨",
 };
 
 const contents = (displayMode: string, setShowModal: Function) => {

@@ -8,6 +8,7 @@ import { Asset } from "./logic/calculate-all-assets";
 import { Modal } from "@/components/modal/modal";
 import { CreateForm } from "./forms/create";
 import { UpdateForm } from "./forms/update";
+import { DISPLAY_MODE as ASSET_DISPLAY_MODE } from "@/constants/display-mode";
 
 export type Props = {
   assets: Asset[];
@@ -84,12 +85,7 @@ const AssetsComponent: FC<Props> = ({ assets, currentUsdJpy }) => {
   }, []);
   // チェックボックスのレンダリング
   const renderCheckboxes = () => {
-    const groupJapaneseName: { [key: string]: string } = {
-      usStock: "米国株",
-      japanFund: "日本投資信託",
-      crypto: "仮想通貨",
-      fixedIncomeAsset: "固定利回り資産",
-    };
+    const groupJapaneseName: { [key: string]: string } = ASSET_DISPLAY_MODE;
 
     return (
       <div>

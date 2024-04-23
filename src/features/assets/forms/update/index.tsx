@@ -4,17 +4,11 @@ import { Asset } from "../../logic/calculate-all-assets";
 import { UpdateJapanFundForm } from "./japan-fund";
 import { UpdateFixedIncomeAssetForm } from "./fixed-income-asset";
 import { UpdateCryptoForm } from "./crypto";
+import { DISPLAY_MODE } from "@/constants/display-mode";
 
 type Props = {
   assets: Asset[];
   setShowModal: Function;
-};
-
-const DISPLAY_MODE = {
-  usStock: "米国株",
-  japanFund: "日本投資信託",
-  fixedIncomeAsset: "固定利回り資産",
-  crypto: "暗号通貨",
 };
 
 const contents = (
