@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from "react";
 import { Exact, TotalAsset, TotalAssetsQuery } from "@/gql/graphql";
 import { ApolloQueryResult } from "@apollo/client";
-import { StackedArea } from "@/components/graph/stacked-area";
+import { StackedArea, StackedAreaType } from "@/components/graph/stacked-area";
 import { themeForest } from "@/constants/theme-color";
 import { SemiCircle } from "@/components/graph/semi-circle";
 import {
@@ -27,6 +27,49 @@ type Props = {
   ) => Promise<ApolloQueryResult<TotalAssetsQuery>>;
   currentUsdJpy: number;
 };
+
+/**
+ * 配列内のTotalAssetオブジェクトから各資産カテゴリごとのデータを抽出し、整理する
+ */
+function summarizeAssets(
+  assets: TotalAsset[],
+  currentUsdJpy: number
+): StackedAreaType[] {
+  // 各資産カテゴリに対応するデータを格納するためのマップオブジェクト
+  const summaries = {
+    cashJpy: [] as number[],
+    cashUsd: [] as number[],
+    crypto: [] as number[],
+    fixedIncomeAsset: [] as number[],
+    fund: [] as number[],
+    stock: [] as number[],
+  };
+
+  // 各資産のデータをマップに追加
+  assets.forEach((asset) => {
+    summaries.cashJpy.push(asset.cashJpy);
+    summaries.cashUsd.push(asset.cashUsd);
+    summaries.crypto.push(asset.crypto);
+    summaries.fixedIncomeAsset.push(asset.fixedIncomeAsset);
+    summaries.fund.push(asset.fund);
+    summaries.stock.push(asset.stock);
+  });
+
+  // 最終的な出力形式に変換
+  return [
+    { name: "Cash JPY", data: summaries.cashJpy },
+    {
+      name: "Cash USD",
+      data: summaries.cashUsd.map(
+        (value) => Math.round(value * currentUsdJpy * 10) / 10
+      ),
+    },
+    { name: "Cryptocurrency", data: summaries.crypto },
+    { name: "Fixed Income Assets", data: summaries.fixedIncomeAsset },
+    { name: "Funds", data: summaries.fund },
+    { name: "Stocks", data: summaries.stock },
+  ];
+}
 
 const TotalAssetsDetailComponent: FC<Props> = ({
   totalAssets,
@@ -62,6 +105,19 @@ const TotalAssetsDetailComponent: FC<Props> = ({
   const displayPriceRate = isNaN(priceRate)
     ? "-"
     : (Math.round(priceRate * 100) / 100).toLocaleString();
+
+  // graphのseriesデータを計算
+  const series: StackedAreaType[] = [
+    {
+      name: "資産総額",
+      data: totalAssets.map((asset) =>
+        caluclateTotalAsset(asset, currentUsdJpy)
+      ),
+    },
+  ];
+  // asset別のデータを計算
+  const detailSeries = summarizeAssets(totalAssets, currentUsdJpy);
+
   return (
     <>
       <p className={priceRateBalance}>
@@ -76,10 +132,14 @@ const TotalAssetsDetailComponent: FC<Props> = ({
       <PrimaryButton content="全期間" onClick={() => refetch({ day: 0 })} />
       <StackedArea
         xData={totalAssets.map((asset) => formatDate(asset.createdAt))}
-        yData={totalAssets.map((asset) =>
-          caluclateTotalAsset(asset, currentUsdJpy)
-        )}
+        series={series}
         themeColor={themeForest[0]}
+        background="#343a40"
+      />
+
+      <StackedArea
+        xData={totalAssets.map((asset) => formatDate(asset.createdAt))}
+        series={detailSeries}
         background="#343a40"
       />
       <h1 className="mb-2">資産割合</h1>

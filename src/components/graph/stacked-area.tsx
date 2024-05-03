@@ -4,17 +4,22 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { ANIMATION_DURATION_TIME } from "./setting";
 type Props = {
-  themeColor: string;
+  themeColor?: string;
   background: string;
   xData: string[];
-  yData: number[];
+  series: StackedAreaType[];
+};
+
+export type StackedAreaType = {
+  name: string;
+  data: number[];
 };
 
 const StackedAreaComponent: FC<Props> = ({
   themeColor,
   background,
   xData,
-  yData,
+  series,
 }) => {
   const options = {
     chart: {
@@ -55,12 +60,7 @@ const StackedAreaComponent: FC<Props> = ({
         },
       },
     },
-    series: [
-      {
-        name: "資産総額",
-        data: yData,
-      },
-    ],
+    series,
   };
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;
