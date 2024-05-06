@@ -115,6 +115,8 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
   const submitLoading = () => {
     if (updateLoading) {
       return <Loading />;
+    } else {
+      return "更新";
     }
   };
 
@@ -180,8 +182,11 @@ const UpdateUsStockFormComponent: FC<Props> = ({ assets, setShowModal }) => {
             defaultValue={usdJpy}
           />
         </FormGroup>
-        <PrimaryButton content="更新" className="mb-3 w-100" type="submit" />
-        {submitLoading()}
+        <PrimaryButton
+          content={submitLoading()}
+          className="mb-3 w-100"
+          type="submit"
+        />
       </form>
       <DangerButton
         content="この銘柄を全売却"
